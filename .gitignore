@@ -1,0 +1,13 @@
+# Ignore config files with credentials
+server/config/.env
+server/config/config.php
+
+# Ignore logs
+logs/*.log
+logs/
+
+# Ignore database backups
+database/*.sql
+
+# Ignore system files
+.htaccess
