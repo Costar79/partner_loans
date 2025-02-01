@@ -11,3 +11,6 @@ database/*.sql
 
 # Ignore system files
 .htaccess
+
+# Ignore test folder
+tests/
