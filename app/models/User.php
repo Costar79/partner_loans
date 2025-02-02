@@ -8,10 +8,19 @@ class User {
     }
 
     // ✅ Get user by ID Number
+    /*
+        // Returns false instead of null
     public function getUserByIdNumber($id_number) {
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE id_number = ?");
         $stmt->execute([$id_number]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }*/
+    // Use for now
+    public function getUserByIdNumber($id_number) {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE id_number = ?");
+        $stmt->execute([$id_number]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $user ?: null; // ✅ Ensures `null` is returned instead of `false`
     }
 
     // ✅ Register new user

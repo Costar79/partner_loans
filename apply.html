@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Loan</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Apply for a Loan</h2>
+
+        <!-- ✅ Login Form (Shown if No Token Exists) -->
+        <div id="loginSection">
+            <form id="loginForm">
+                <label for="idNumber">ID Number:</label>
+                <input type="text" id="idNumber" placeholder="Enter your ID Number" required>
+
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" placeholder="Enter your Phone Number" required>
+
+                <button type="submit">Continue</button>
+            </form>
+        </div>
+
+        <!-- ✅ Loan Application Form (Shown After Login) -->
+        <div id="loanSection" style="display: none;">
+            <form id="loanForm">
+                <label for="amount">Loan Amount:</label>
+                <input type="text" id="amount" placeholder="Enter amount" required>
+
+                <label for="term">Loan Term (Months):</label>
+                <select id="term">
+                    <option value="">Select Loan Amount First</option>
+                </select>
+
+                <div id="followingPaydayContainer" style="display: none;">
+                    <input type="checkbox" id="followingPayday">
+                    <label for="followingPayday">Apply for "Following Payday" Option</label>
+                </div>
+
+                <button type="submit">Apply Now</button>
+            </form>
+
+            <button id="logoutButton">Logout</button>
+        </div>
+
+    </div>
+
+    <script src="js/apply.js" defer></script>
+</body>
+</html>
