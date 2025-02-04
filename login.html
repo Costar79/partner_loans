@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <img src="/img/CL_logo_350x79.png" alt="Co-Lend Finance Logo" loading="lazy">
+    </div>
+    <div class="top-bar">
+        <h2>Login</h2>
+    </div>
+    <div class="container">
+
+        <div id="loginSection">
+            <form id="loginForm">
+                <label for="idNumber">ID Number:</label>
+                <input type="number" id="idNumber" placeholder="Enter your ID Number" maxlength="13" required>
+
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" placeholder="(___) ___ - ____" maxlength="16" required>
+
+
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </div>
+<script>
+    function getPartnerCode() {
+        const urlPath = window.location.pathname; // Get the current path
+        const match = urlPath.match(/^\/pc\/([0-9]{4})$/);
+        return match ? match[1] : null; // Extract `0000` from `/pc/0000`
+    }
+    
+    const partnerCode = getPartnerCode();
+    if (partnerCode) {
+        console.log("✅ Captured partner code:", partnerCode);
+        localStorage.setItem("partner_code", partnerCode);
+    }
+</script>
+    <script src="/js/log_control.js" defer></script>
+    <script src="/js/login.js?v=2" defer></script>
+</body>
+</html>

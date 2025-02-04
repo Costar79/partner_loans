@@ -1,6 +1,26 @@
-[02-Feb-2025 10:15:39 Africa/Johannesburg] PHP Warning:  Undefined array key "amount" in /home/costarne/public_html/t/server/api/loan.php on line 61
-[02-Feb-2025 10:15:39 Africa/Johannesburg] PHP Warning:  Undefined array key "term" in /home/costarne/public_html/t/server/api/loan.php on line 62
-[02-Feb-2025 10:15:55 Africa/Johannesburg] PHP Warning:  Undefined array key "amount" in /home/costarne/public_html/t/server/api/loan.php on line 61
-[02-Feb-2025 10:15:55 Africa/Johannesburg] PHP Warning:  Undefined array key "term" in /home/costarne/public_html/t/server/api/loan.php on line 62
-[02-Feb-2025 10:23:36 Africa/Johannesburg] PHP Warning:  Undefined array key "amount" in /home/costarne/public_html/t/server/api/loan.php on line 61
-[02-Feb-2025 10:23:36 Africa/Johannesburg] PHP Warning:  Undefined array key "term" in /home/costarne/public_html/t/server/api/loan.php on line 62
+
+[04-Feb-2025 04:24:31 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"d4c0768bdb7baf9f027f0827eaf27ed7f27ae5b212e06de0f2060ddb5b276b31"}
+[04-Feb-2025 04:24:31 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: d4c0768bdb7baf9f027f0827eaf27ed7f27ae5b212e06de0f2060ddb5b276b31
+[04-Feb-2025 04:24:31 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
+[04-Feb-2025 04:24:34 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"d4c0768bdb7baf9f027f0827eaf27ed7f27ae5b212e06de0f2060ddb5b276b31"}
+[04-Feb-2025 04:24:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: d4c0768bdb7baf9f027f0827eaf27ed7f27ae5b212e06de0f2060ddb5b276b31
+[04-Feb-2025 04:24:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
+[04-Feb-2025 04:24:41 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"d4c0768bdb7baf9f027f0827eaf27ed7f27ae5b212e06de0f2060ddb5b276b31"}
+[04-Feb-2025 04:24:41 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: d4c0768bdb7baf9f027f0827eaf27ed7f27ae5b212e06de0f2060ddb5b276b31
+[04-Feb-2025 04:24:41 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
+[04-Feb-2025 04:38:40 Africa/Johannesburg] [LOGGER] [ERROR] Missing user token in request.
+[04-Feb-2025 04:38:43 Africa/Johannesburg] [LOGGER] [ERROR] Missing user token in request.
+[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
+[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0715556666","partner_code":"0000"}
+[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
+[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
+[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"b0370a44817f1855d5d3c46f92a96cbaad7738eb9ebe7533d2c3c8d6cd2ab1ff"}
+[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: b0370a44817f1855d5d3c46f92a96cbaad7738eb9ebe7533d2c3c8d6cd2ab1ff
+[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
+[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
+[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0714445555","partner_code":"0000"}
+[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
+[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
+[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"24df824fa89e06bfc25424f048064e92cc65e587b8e0a684b3961381f765256e"}
+[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 24df824fa89e06bfc25424f048064e92cc65e587b8e0a684b3961381f765256e
+[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.

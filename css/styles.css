@@ -6,48 +6,71 @@ body {
     color: #3B1E08;
     text-align: center;
     font-size: 1.25rem;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Full-Width Header */
+.header {
+    width: 100%;
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 25px 0;
+    z-index: 1001; /* Ensures it stays above the top bar */
+    position: relative; /* Keeps it separate from fixed elements */
+    /*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);  Optional for better visibility */
+}
+
+.header img {
+    width: 100%;  /* Reduce width to 80% of its original size */
+    max-width: 300px; /* Limit max width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Ensure Header Content is Centered */
+.header h1, .header h2 {
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+
+/* Full-Width Top Bar (Subheader) */
+.top-bar {
+    background-color: #3B1E08;
+    color: white;
+    padding: 3px 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    width: 100%; /* Make it stretch across the full width */
+    text-align: center;
+    position: relative; /* Now it follows the header without overlapping */
+    z-index: 1000;
+}
+
+/* Main Wrapper to Keep Everything Centered */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px; /* Adds spacing below top-bar */
 }
 
 /* Main Container */
 .container {
     background: white;
-    padding: 20px;
+    padding: 0px 10px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
     text-align: center;
-    width: 90%;
-    max-width: 400px;
-    margin: 20px auto; /* ✅ Adds proper spacing from the top */
-}
-
-/* Header Section */
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.header img {
-    max-height: 80px;
-    width: auto;
-}
-
-/* Top Bar */
-.top-bar {
-    background-color: #3B1E08;
-    color: white;
-    padding: 10px 0;
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-/* Page Title */
-h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 10px; /* ✅ Reduce spacing under title */
+    width: 60%; /* Adjust width */
+    max-width: 320px;
+    margin: 25px auto;
 }
 
 /* Form Styling */
@@ -55,27 +78,21 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px; /* ✅ Reduces space between input fields */
+    gap: 12px;
     width: 100%;
 }
 
-/* Input Fields */
+/* Centered & Responsive Input Fields */
 input, select {
     font-size: 1rem;
     padding: 10px;
-    width: 100%;
-    max-width: 280px;
+    width: 75%;
+    max-width: 220px;
     border: 1px solid #ccc;
     border-radius: 5px;
     text-align: center;
-    transition: all 0.3s ease-in-out;
-}
-
-/* Focused Input Effect */
-input:focus, select:focus {
-    border-color: #1BD793;
-    outline: none;
-    box-shadow: 0 0 8px rgba(27, 215, 147, 0.5);
+    display: block;
+    margin: 8px auto;
 }
 
 /* Buttons */
@@ -85,16 +102,18 @@ button {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    padding: 12px;
+    padding: 10px;
     font-size: 1rem;
     font-weight: 600;
-    transition: all 0.3s ease-in-out;
-    width: 100%;
-    max-width: 250px;
+    width: 45%;
+    max-width: 150px;
     text-align: center;
+    display: block;
+    margin: 10px auto;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Button Hover & Click Effects */
+/* Button Hover Effects */
 button:hover {
     background-color: #1BD793;
     color: #3B1E08;
@@ -106,59 +125,82 @@ button:active {
     transform: scale(0.98);
 }
 
-/* Logout Button */
+
+/* Smaller & Centered Logout Button */
 #logoutButton {
-    background-color: #dc3545;
+    background-color: #ff8b25;
     margin-top: 15px;
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    max-width: 80px;
+    height: 30px;
+    display: block;
+    margin: 10px auto;
 }
 
+/* Hover & Active Effects */
 #logoutButton:hover {
-    background-color: #c82333;
+    background-color: #ff8b25;
+    transform: scale(1.05);
 }
 
-/* Error Messages */
-.error-messages {
-    padding: 10px;
-    font-size: 1rem;
-    margin: 5px auto;
-    max-width: 300px;
-    text-align: center;
-    border-radius: 5px;
-    display: none;
+#logoutButton:active {
+    background-color: #3b1e08;
+    transform: scale(0.98);
 }
 
-/* Error Styling */
-.error-messages.error {
-    background-color: #FDEDED;
-    color: #FF0000;
-    border: 1px solid #FF0000;
-}
 
-/* Success Styling */
-.error-messages.success {
-    background-color: #E6F8EC;
-    color: #1BD793;
-    border: 1px solid #1BD793;
-}
-
-/* Footer */
-.footer {
-    padding: 10px 0;
-    background-color: #3B1E08;
-    color: white;
-    font-size: 0.9rem;
-    position: relative;
-    bottom: 0;
-}
-
-/* Responsive Design */
+/* Mobile-Friendly Styles */
 @media (max-width: 600px) {
     .container {
-        width: 95%;
-        padding: 15px;
+        width: 80%; /* Slightly larger for smaller screens */
+        padding: 12px;
     }
 
     input, select, button {
         max-width: 100%;
     }
+
+    .logout-button {
+        width: 80%;
+    }
 }
+
+/* Centered Loan History Table */
+#loanHistoryTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9px;
+    margin: 15px auto;
+}
+
+#loanHistoryTable th, #loanHistoryTable td {
+    border: 1px solid #ddd;
+    padding: 4px;
+    text-align: center;
+}
+
+#loanHistoryTable th {
+    background-color: #f4f4f4;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#loanHistoryTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#loanHistoryTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Table */
+@media (max-width: 600px) {
+    #loanHistoryTable {
+        font-size: 11px;
+    }
+    #loanHistoryTable th, #loanHistoryTable td {
+        padding: 3px;
+    }
+}
+

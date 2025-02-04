@@ -3,50 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply for Loan</title>
+    <title>Co-Lend Finance</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <div class="header">
+        <img src="/img/CL_logo_350x79.png" alt="Co-Lend Finance Logo" loading="lazy">
+    </div>
+    <div class="top-bar">
+        <h2>Loan Application</h2>
+    </div>      
     <div class="container">
-        <h2>Apply for a Loan</h2>
 
-        <!-- ✅ Login Form (Shown if No Token Exists) -->
-        <div id="loginSection">
-            <form id="loginForm">
-                <label for="idNumber">ID Number:</label>
-                <input type="text" id="idNumber" placeholder="Enter your ID Number" required>
-
-                <label for="phoneNumber">Phone Number:</label>
-                <input type="tel" id="phoneNumber" placeholder="Enter your Phone Number" required>
-
-                <button type="submit">Continue</button>
-            </form>
+        <!-- ✅ Show "Application Pending" if a loan is awaiting response -->
+        <div id="pendingApplication" style="display: none;">
+            <p>Pending</p>
         </div>
 
-        <!-- ✅ Loan Application Form (Shown After Login) -->
+        <!-- ✅ Loan Application Form (Only Shown If No Pending Loan) -->
         <div id="loanSection" style="display: none;">
             <form id="loanForm">
                 <label for="amount">Loan Amount:</label>
-                <input type="text" id="amount" placeholder="Enter amount" required>
+                <input type="number" id="amount" placeholder="Enter amount" required>
 
                 <label for="term">Loan Term (Months):</label>
                 <select id="term">
-                    <option value="">Select Loan Amount First</option>
+                    <option value="">Enter A Loan Amount First</option>
                 </select>
 
                 <div id="followingPaydayContainer" style="display: none;">
                     <input type="checkbox" id="followingPayday">
-                    <label for="followingPayday">Apply for "Following Payday" Option</label>
+                    <label for="followingPayday">Following Payday</label>
                 </div>
 
                 <button type="submit">Apply Now</button>
             </form>
-
-            <button id="logoutButton">Logout</button>
         </div>
-
+        
+        <!-- ✅ Loan History Table -->
+        <div id="loanHistoryContainer">
+            <h3>History</h3>
+            <table id="loanHistoryTable" class="small-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Term</th>
+                        <th>Status</th>
+                        <th>Settled</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loan history data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+        <!-- ✅ Logout Button (Always Visible) -->
+        <button id="logoutButton">Logout</button>
     </div>
-
-    <script src="js/apply.js" defer></script>
+    <script src="/js/log_control.js?v=2" defer></script>
+    <script src="/js/apply.js" defer></script>
 </body>
 </html>

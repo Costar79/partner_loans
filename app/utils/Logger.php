@@ -1,9 +1,11 @@
 <?php
+//error_log("🔍 Logger.php is being executed from API request.");
+
 
 class Logger {
-    private static $settings; // Store settings globally in this class
+    private static $settings;
 
-    // ✅ Load settings once (Singleton-style caching)
+    // ✅ Load settings once
     private static function loadSettings() {
         if (self::$settings === null) {
             self::$settings = require __DIR__ . '/../../server/config/settings.php';
@@ -12,7 +14,6 @@ class Logger {
 
     public static function logInfo($category, $message) {
         self::loadSettings();
-
         if (!empty(self::$settings['logging'][$category])) {
             self::writeLog($category, "INFO", $message);
         }
@@ -20,7 +21,6 @@ class Logger {
 
     public static function logWarning($category, $message) {
         self::loadSettings();
-
         if (!empty(self::$settings['logging'][$category])) {
             self::writeLog($category, "WARNING", $message);
         }
@@ -28,8 +28,7 @@ class Logger {
 
     public static function logError($category, $message) {
         self::loadSettings();
-
-        if (!empty(self::$settings['logging']['errors'])) { // ✅ Always log general errors
+        if (!empty(self::$settings['logging']['errors'])) {
             self::writeLog($category, "ERROR", $message);
         }
     }
@@ -39,19 +38,33 @@ class Logger {
 
         // ✅ Ensure logs directory exists
         if (!is_dir($logDir)) {
-            if (!mkdir($logDir, 0777, true)) {
-                die("❌ Logger failed to create logs directory: $logDir");
-            }
+            mkdir($logDir, 0777, true);
         }
 
-        $logFile = $logDir . "{$category}.log";  // Log file path
+        $logFile = $logDir . "{$category}.log";
         $timestamp = date('Y-m-d H:i:s');
         $logMessage = "[$timestamp] [$level] $message" . PHP_EOL;
 
-        // ✅ Attempt to write log
-        if (!file_put_contents($logFile, $logMessage, FILE_APPEND)) {
-            die("❌ Logger failed to write to $logFile. Check file permissions.");
+        // ✅ Write to log file
+        file_put_contents($logFile, $logMessage, FILE_APPEND);
+
+        // ✅ Debug: Log whether console logging is enabled
+        $logFilePath = $logDir . "errors.log";
+
+        /*
+        if (!file_put_contents($logFilePath, "🔍 Debug: Logger Console Setting = " . json_encode(self::$settings['logging']['console']) . PHP_EOL, FILE_APPEND)) {
+            error_log("❌ Failed to write to logs/errors.log. Check file permissions.");
         }
+        */
+        
+        // ✅ Only log to the browser console if `console` is explicitly `true`
+        if (!empty(self::$settings['logging']['console']) && self::$settings['logging']['console'] === true) {
+            error_log("[LOGGER] [{$level}] {$message}"); // ✅ Only logs to error_log, no `<script>` output
+        } else {
+            file_put_contents($logFilePath, "❌ Logger attempted console output when disabled" . PHP_EOL, FILE_APPEND);
+            //error_log("❌ Console logging is disabled. Skipping console output.");
+        }
+
     }
 }
 ?>

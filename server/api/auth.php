@@ -5,6 +5,8 @@ require_once '../config/settings.php';
 require_once '../../app/models/User.php';
 require_once '../../app/utils/Logger.php';
 
+Logger::logInfo('api_call', "API script executed: " . __FILE__);
+
 $settings = require_once '../config/settings.php';
 
 $database = new Database();
