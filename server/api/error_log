@@ -24,3 +24,29 @@
 [04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"24df824fa89e06bfc25424f048064e92cc65e587b8e0a684b3961381f765256e"}
 [04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 24df824fa89e06bfc25424f048064e92cc65e587b8e0a684b3961381f765256e
 [04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
+[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
+[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0815556666","partner_code":"0000"}
+[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
+[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
+[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"b16e31fb6c8fa9a577570dd2a007edd5976057ce3e39afe94c775e1090bd56ce"}
+[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: b16e31fb6c8fa9a577570dd2a007edd5976057ce3e39afe94c775e1090bd56ce
+[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
+[04-Feb-2025 05:51:41 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
+[04-Feb-2025 05:51:41 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7902115137083","phone_number":"0825553333","partner_code":"0000"}
+[04-Feb-2025 05:51:41 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Invalid Luhn Checksum for ID 7902115137083
+[04-Feb-2025 05:51:41 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 7902115137083
+[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
+[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7902115137083","phone_number":"0825553333","partner_code":"0000"}
+[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Invalid Luhn Checksum for ID 7902115137083
+[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 7902115137083
+[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
+[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7902115137083","phone_number":"0825553333","partner_code":"0000"}
+[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Invalid Luhn Checksum for ID 7902115137083
+[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 7902115137083
+[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
+[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0832999994","partner_code":"0000"}
+[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
+[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
+[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"da3b666d6bf5d7aaf5352f277b193231a225ad70fb4524924da23cc5c554d1bf"}
+[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: da3b666d6bf5d7aaf5352f277b193231a225ad70fb4524924da23cc5c554d1bf
+[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
