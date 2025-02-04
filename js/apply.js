@@ -7,11 +7,61 @@ document.addEventListener("DOMContentLoaded", async () => {
     const pendingApplication = document.getElementById("pendingApplication");
     const followingPaydayContainer = document.getElementById("followingPaydayContainer");
     const logoutButton = document.getElementById("logoutButton");
+    const loanForm = document.getElementById("loanForm");
 
     if (!loanSection || !pendingApplication || !logoutButton) {
         console_Error("❌ Critical Error: Required elements not found in apply.html");
         return;
     }
+
+if (loanForm) {
+    loanForm.addEventListener("submit", async (event) => {
+        event.preventDefault(); // Prevent page reload
+
+        const userToken = localStorage.getItem("user_token");
+        if (!userToken) {
+            console_Error("❌ No user token found. Redirecting to login.");
+            window.location.href = "/login.html";
+            return;
+        }
+
+        const amount = document.getElementById("amount").value;
+        const term = document.getElementById("term").value;
+        const followingPayday = document.getElementById("followingPayday").checked;
+
+        if (!amount || !term) {
+            console_Error("❌ Loan amount or term is missing.");
+            return;
+        }
+
+        try {
+            const response = await fetch("/server/api/loan.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    user_token: userToken,
+                    amount: amount,
+                    term: term,
+                    followingPayday: followingPayday
+                })
+            });
+
+            const data = await response.json();
+            if (data.error) {
+                console_Error("❌ Loan application failed: " + data.error);
+                return;
+            }
+
+            console_Log("✅ Loan application successful: " + JSON.stringify(data));
+            alert("Loan Application Submitted Successfully!");
+
+            // Refresh loan history after submission
+            verifyUserState(userToken);
+        } catch (error) {
+            console_Error("❌ Error submitting loan application: " + error);
+        }
+    });
+}
 
 async function verifyUserState(token) {
     console_Log("🚀 Checking loan status with loan.php:" + token);

@@ -27,8 +27,16 @@ function console_Log(message) {
     }
 }
 
+function console_Warn(message) {
+    if (consoleEnabled) {
+        console.warn(message);
+    } else {
+        //console.warn("⚠️ console_Log() suppressed:", message);
+    }
+}
+
 function console_Error(message) {
-    if (config.consoleLogging) {
+    if (consoleEnabled) {
         console.error(message);
     } else {
         //console.warn("⚠️ console_Log() suppressed:", message);

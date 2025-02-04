@@ -1,15 +1,9 @@
 <?php
-/*
 header("Content-Type: application/json");
-require_once '../config/config.php'; // Load environment variables
+require_once '../config/config.php'; // Ensure config.php is loaded
 
-$consoleLogging = getenv('CONSOLE_LOGGING') === 'true' ? true : false;
+$consoleLogging = isset($env['CONSOLE_LOGGING']) ? filter_var($env['CONSOLE_LOGGING'], FILTER_VALIDATE_BOOLEAN) : false;
 
 echo json_encode(["consoleLogging" => $consoleLogging]);
-*/
-header('Content-Type: application/json');
-echo json_encode(["consoleLogging" => true]);
-exit;
-
 exit;
 ?>

@@ -17,7 +17,7 @@
 
         <!-- ✅ Show "Application Pending" if a loan is awaiting response -->
         <div id="pendingApplication" style="display: none;">
-            <p>Pending</p>
+            <h3>Pending</h3>
         </div>
 
         <!-- ✅ Loan Application Form (Only Shown If No Pending Loan) -->
@@ -42,8 +42,9 @@
         
         <!-- ✅ Loan History Table -->
         <div id="loanHistoryContainer">
-            <h3>History</h3>
+            <p>Loan History</p>
             <table id="loanHistoryTable" class="small-table">
+                
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -59,8 +60,8 @@
             </table>
         </div>
         <!-- ✅ Logout Button (Always Visible) -->
-        <button id="logoutButton">Logout</button>
     </div>
+        <button id="logoutButton">Logout</button>    
     <script src="/js/log_control.js?v=2" defer></script>
     <script src="/js/apply.js" defer></script>
 </body>

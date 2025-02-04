@@ -7,18 +7,21 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+    
     <div class="header">
         <img src="/img/CL_logo_350x79.png" alt="Co-Lend Finance Logo" loading="lazy">
     </div>
-    <div class="top-bar">
-        <h2>Login</h2>
-    </div>
+    
+    <div class="top-bar"><h2>Login</h2></div>
+    
+    <div id="notificationMessages" class="notification-messages"></div>
+    
     <div class="container">
 
         <div id="loginSection">
             <form id="loginForm">
                 <label for="idNumber">ID Number:</label>
-                <input type="number" id="idNumber" placeholder="Enter your ID Number" maxlength="13" required>
+                <input type="text" id="idNumber" placeholder="Enter your ID Number" maxlength="13" required>
 
                 <label for="phoneNumber">Phone Number:</label>
                 <input type="tel" id="phoneNumber" placeholder="(___) ___ - ____" maxlength="16" required>

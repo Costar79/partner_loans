@@ -1,4 +1,4 @@
-/* Apply Poppins font globally */
+/* Apply Poppins font globally except for the table */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -14,21 +14,25 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
+/* Ensure tables do not use Poppins */
+table {
+    font-family: Arial, sans-serif;
+}
+
 /* Full-Width Header */
 .header {
     width: 100%;
     background-color: #FFFFFF;
     text-align: center;
     padding: 25px 0;
-    z-index: 1001; /* Ensures it stays above the top bar */
-    position: relative; /* Keeps it separate from fixed elements */
-    /*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);  Optional for better visibility */
+    z-index: 1001;
+    position: relative;
 }
 
 .header img {
-    width: 100%;  /* Reduce width to 80% of its original size */
-    max-width: 300px; /* Limit max width */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    max-width: 300px;
+    height: auto;
 }
 
 /* Ensure Header Content is Centered */
@@ -46,19 +50,19 @@ body {
     padding: 3px 0;
     font-size: 1.3rem;
     font-weight: 600;
-    width: 100%; /* Make it stretch across the full width */
+    width: 100%;
     text-align: center;
-    position: relative; /* Now it follows the header without overlapping */
+    position: relative;
     z-index: 1000;
 }
 
-/* Main Wrapper to Keep Everything Centered */
+/* Main Wrapper */
 .wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 15px; /* Adds spacing below top-bar */
+    margin-top: 15px;
 }
 
 /* Main Container */
@@ -68,9 +72,34 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
     text-align: center;
-    width: 60%; /* Adjust width */
+    width: 60%;
     max-width: 320px;
     margin: 25px auto;
+}
+
+/* Notification Messages */
+.notification-messages {
+    padding: 10px;
+    font-size: 1rem;
+    margin: 5px auto;
+    max-width: 300px;
+    text-align: center;
+    border-radius: 5px;
+    display: none;
+}
+
+/* Error Styling */
+.notification-messages.error {
+    background-color: #FDEDED;
+    color: #FF0000;
+    border: 1px solid #FF0000;
+}
+
+/* Success Styling */
+.notification-messages.success {
+    background-color: #E6F8EC;
+    color: #1BD793;
+    border: 1px solid #1BD793;
 }
 
 /* Form Styling */
@@ -82,7 +111,7 @@ form {
     width: 100%;
 }
 
-/* Centered & Responsive Input Fields */
+/* Input and Select Fields */
 input, select {
     font-size: 1rem;
     padding: 10px;
@@ -125,20 +154,18 @@ button:active {
     transform: scale(0.98);
 }
 
-
-/* Smaller & Centered Logout Button */
+/* Logout Button */
 #logoutButton {
     background-color: #ff8b25;
-    margin-top: 15px;
     font-size: 0.75rem;
     padding: 6px 10px;
     max-width: 80px;
     height: 30px;
     display: block;
-    margin: 10px auto;
+    margin: 30px auto;
 }
 
-/* Hover & Active Effects */
+/* Logout Hover & Active Effects */
 #logoutButton:hover {
     background-color: #ff8b25;
     transform: scale(1.05);
@@ -149,11 +176,10 @@ button:active {
     transform: scale(0.98);
 }
 
-
 /* Mobile-Friendly Styles */
 @media (max-width: 600px) {
     .container {
-        width: 80%; /* Slightly larger for smaller screens */
+        width: 80%;
         padding: 12px;
     }
 
@@ -166,26 +192,37 @@ button:active {
     }
 }
 
+/* Loan History Styling */
+#loanHistoryContainer p {
+    font-size: 12px; /* Smaller font size */
+    margin-bottom: 2px; /* Reduces space below the text */
+    font-weight: bold; /* Keeps it readable */
+    padding-bottom: 15px;
+}
+
 /* Centered Loan History Table */
 #loanHistoryTable {
     width: 100%;
     border-collapse: collapse;
     font-size: 9px;
-    margin: 15px auto;
+    margin: 5px auto 25px auto;
 }
 
+/* Table Cells */
 #loanHistoryTable th, #loanHistoryTable td {
     border: 1px solid #ddd;
     padding: 4px;
     text-align: center;
 }
 
+/* Table Headers */
 #loanHistoryTable th {
     background-color: #f4f4f4;
     font-size: 13px;
     font-weight: bold;
 }
 
+/* Alternate Row Colors */
 #loanHistoryTable tr:nth-child(even) {
     background-color: #f9f9f9;
 }
@@ -203,4 +240,3 @@ button:active {
         padding: 3px;
     }
 }
-
