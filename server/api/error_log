@@ -1,311 +1,130 @@
-
-[04-Feb-2025 04:24:31 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"d4c0768bdb7baf9f027f0827eaf27ed7f27ae5b212e06de0f2060ddb5b276b31"}
-[04-Feb-2025 04:24:31 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: d4c0768bdb7baf9f027f0827eaf27ed7f27ae5b212e06de0f2060ddb5b276b31
-[04-Feb-2025 04:24:31 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 04:24:34 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"d4c0768bdb7baf9f027f0827eaf27ed7f27ae5b212e06de0f2060ddb5b276b31"}
-[04-Feb-2025 04:24:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: d4c0768bdb7baf9f027f0827eaf27ed7f27ae5b212e06de0f2060ddb5b276b31
-[04-Feb-2025 04:24:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 04:24:41 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"d4c0768bdb7baf9f027f0827eaf27ed7f27ae5b212e06de0f2060ddb5b276b31"}
-[04-Feb-2025 04:24:41 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: d4c0768bdb7baf9f027f0827eaf27ed7f27ae5b212e06de0f2060ddb5b276b31
-[04-Feb-2025 04:24:41 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 04:38:40 Africa/Johannesburg] [LOGGER] [ERROR] Missing user token in request.
-[04-Feb-2025 04:38:43 Africa/Johannesburg] [LOGGER] [ERROR] Missing user token in request.
-[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0715556666","partner_code":"0000"}
-[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"b0370a44817f1855d5d3c46f92a96cbaad7738eb9ebe7533d2c3c8d6cd2ab1ff"}
-[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: b0370a44817f1855d5d3c46f92a96cbaad7738eb9ebe7533d2c3c8d6cd2ab1ff
-[04-Feb-2025 04:47:46 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0714445555","partner_code":"0000"}
-[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"24df824fa89e06bfc25424f048064e92cc65e587b8e0a684b3961381f765256e"}
-[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 24df824fa89e06bfc25424f048064e92cc65e587b8e0a684b3961381f765256e
-[04-Feb-2025 04:57:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0815556666","partner_code":"0000"}
-[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"b16e31fb6c8fa9a577570dd2a007edd5976057ce3e39afe94c775e1090bd56ce"}
-[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: b16e31fb6c8fa9a577570dd2a007edd5976057ce3e39afe94c775e1090bd56ce
-[04-Feb-2025 05:49:56 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 05:51:41 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 05:51:41 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7902115137083","phone_number":"0825553333","partner_code":"0000"}
-[04-Feb-2025 05:51:41 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Invalid Luhn Checksum for ID 7902115137083
-[04-Feb-2025 05:51:41 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 7902115137083
-[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7902115137083","phone_number":"0825553333","partner_code":"0000"}
-[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Invalid Luhn Checksum for ID 7902115137083
-[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 7902115137083
-[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7902115137083","phone_number":"0825553333","partner_code":"0000"}
-[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Invalid Luhn Checksum for ID 7902115137083
-[04-Feb-2025 05:51:44 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 7902115137083
-[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0832999994","partner_code":"0000"}
-[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"da3b666d6bf5d7aaf5352f277b193231a225ad70fb4524924da23cc5c554d1bf"}
-[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: da3b666d6bf5d7aaf5352f277b193231a225ad70fb4524924da23cc5c554d1bf
-[04-Feb-2025 07:42:37 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 07:55:12 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 07:55:12 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0715559999","partner_code":"0000"}
-[04-Feb-2025 07:55:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 07:55:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 07:55:12 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"8085834cea91e9be181e1feee755b37fa1e195b32e713dda3749049f942d7f31"}
-[04-Feb-2025 07:55:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 8085834cea91e9be181e1feee755b37fa1e195b32e713dda3749049f942d7f31
-[04-Feb-2025 07:55:12 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 07:55:18 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"8085834cea91e9be181e1feee755b37fa1e195b32e713dda3749049f942d7f31"}
-[04-Feb-2025 07:55:18 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 8085834cea91e9be181e1feee755b37fa1e195b32e713dda3749049f942d7f31
-[04-Feb-2025 07:55:18 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 07:59:14 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"8085834cea91e9be181e1feee755b37fa1e195b32e713dda3749049f942d7f31"}
-[04-Feb-2025 07:59:14 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 8085834cea91e9be181e1feee755b37fa1e195b32e713dda3749049f942d7f31
-[04-Feb-2025 07:59:14 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 07:59:18 Africa/Johannesburg] [LOGGER] [ERROR] Logout failed: No user token provided.
-[04-Feb-2025 07:59:31 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 07:59:31 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0612223333","partner_code":"0000"}
-[04-Feb-2025 07:59:31 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 07:59:31 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 07:59:32 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"cab39656c8006d45590bb49cf7d7592615f269124e614be71e15070441f43a58"}
-[04-Feb-2025 07:59:32 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: cab39656c8006d45590bb49cf7d7592615f269124e614be71e15070441f43a58
-[04-Feb-2025 07:59:32 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 07:59:59 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"cab39656c8006d45590bb49cf7d7592615f269124e614be71e15070441f43a58"}
-[04-Feb-2025 07:59:59 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: cab39656c8006d45590bb49cf7d7592615f269124e614be71e15070441f43a58
-[04-Feb-2025 07:59:59 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 08:00:14 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"cab39656c8006d45590bb49cf7d7592615f269124e614be71e15070441f43a58"}
-[04-Feb-2025 08:00:14 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: cab39656c8006d45590bb49cf7d7592615f269124e614be71e15070441f43a58
-[04-Feb-2025 08:00:14 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 08:08:34 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"cab39656c8006d45590bb49cf7d7592615f269124e614be71e15070441f43a58"}
-[04-Feb-2025 08:08:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: cab39656c8006d45590bb49cf7d7592615f269124e614be71e15070441f43a58
-[04-Feb-2025 08:08:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 08:08:42 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"cab39656c8006d45590bb49cf7d7592615f269124e614be71e15070441f43a58"}
-[04-Feb-2025 08:08:42 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: cab39656c8006d45590bb49cf7d7592615f269124e614be71e15070441f43a58
-[04-Feb-2025 08:08:42 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 08:09:28 Africa/Johannesburg] [LOGGER] [ERROR] Logout failed: No user token provided.
-[04-Feb-2025 08:09:49 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 08:09:49 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7801235167084","phone_number":"0823336666","partner_code":"0000"}
-[04-Feb-2025 08:09:49 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Invalid Luhn Checksum for ID 7801235167084
-[04-Feb-2025 08:09:49 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 7801235167084
-[04-Feb-2025 08:20:44 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 08:20:44 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"071555","partner_code":"0000"}
-[04-Feb-2025 08:20:44 Africa/Johannesburg] [LOGGER] [ERROR] Invalid Phone Number: 071555
-[04-Feb-2025 08:20:49 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 08:20:49 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0715556666","partner_code":"0000"}
-[04-Feb-2025 08:20:49 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 08:20:49 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 08:20:49 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"1cebff4ae6205c7c30352aaa79e380f3203ae004422e4f5cde2fb96dda72feaf"}
-[04-Feb-2025 08:20:49 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 1cebff4ae6205c7c30352aaa79e380f3203ae004422e4f5cde2fb96dda72feaf
-[04-Feb-2025 08:20:49 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 08:24:16 Africa/Johannesburg] [LOGGER] [ERROR] Logout failed: No user token provided.
-[04-Feb-2025 08:28:50 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 08:28:50 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0715558888","partner_code":"0000"}
-[04-Feb-2025 08:28:50 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 08:28:50 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 08:28:50 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"93fd83781e459d48d11e13be0632290a9dbee8bc8f07fed810386fd3f4b917ab"}
-[04-Feb-2025 08:28:50 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 93fd83781e459d48d11e13be0632290a9dbee8bc8f07fed810386fd3f4b917ab
-[04-Feb-2025 08:28:50 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 08:29:28 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 08:29:28 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0714445555","partner_code":"0000"}
-[04-Feb-2025 08:29:28 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 08:29:28 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 08:32:07 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 08:32:07 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0714445555","partner_code":"0000"}
-[04-Feb-2025 08:32:07 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 08:32:07 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 08:32:07 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"7d4a1e3c20f8c238503e4a8ab8256fe7b072e077880fc57ba5ea67077864e7ac"}
-[04-Feb-2025 08:32:07 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 7d4a1e3c20f8c238503e4a8ab8256fe7b072e077880fc57ba5ea67077864e7ac
-[04-Feb-2025 08:32:07 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 08:32:22 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"7d4a1e3c20f8c238503e4a8ab8256fe7b072e077880fc57ba5ea67077864e7ac"}
-[04-Feb-2025 08:32:22 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 7d4a1e3c20f8c238503e4a8ab8256fe7b072e077880fc57ba5ea67077864e7ac
-[04-Feb-2025 08:32:22 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 08:49:51 Africa/Johannesburg] [LOGGER] [ERROR] Logout failed: No user token provided.
-[04-Feb-2025 08:50:36 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 08:50:36 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"79031151254650522144554","phone_number":"0715555555","partner_code":"0000"}
-[04-Feb-2025 08:50:36 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Incorrect Format: 79031151254650522144554
-[04-Feb-2025 08:50:36 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 79031151254650522144554
-[04-Feb-2025 08:52:22 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 08:52:22 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"54545465456546844684648468","phone_number":"0715555555","partner_code":"0000"}
-[04-Feb-2025 08:52:22 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Incorrect Format: 54545465456546844684648468
-[04-Feb-2025 08:52:22 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 54545465456546844684648468
-[04-Feb-2025 08:55:40 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 08:55:40 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7922545646854","phone_number":"0863333333","partner_code":"0000"}
-[04-Feb-2025 08:55:40 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Invalid Date: 792254 in ID 7922545646854
-[04-Feb-2025 08:55:40 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 7922545646854
-[04-Feb-2025 09:00:09 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 09:00:09 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"3333333333333","phone_number":"0658888888","partner_code":"0000"}
-[04-Feb-2025 09:00:09 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Invalid Date: 333333 in ID 3333333333333
-[04-Feb-2025 09:00:09 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 3333333333333
-[04-Feb-2025 09:02:31 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 09:02:31 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"3333333333333","phone_number":"0658888888","partner_code":"0000"}
-[04-Feb-2025 09:02:31 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Invalid Date: 333333 in ID 3333333333333
-[04-Feb-2025 09:02:31 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 3333333333333
-[04-Feb-2025 09:02:42 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 09:02:42 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"0000000000000","phone_number":"0221564694","partner_code":"0000"}
-[04-Feb-2025 09:02:42 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Invalid Date: 000000 in ID 0000000000000
-[04-Feb-2025 09:02:42 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 0000000000000
-[04-Feb-2025 09:03:08 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 09:03:08 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"9109086124088","phone_number":"0221564694","partner_code":"0000"}
-[04-Feb-2025 09:03:08 Africa/Johannesburg] [LOGGER] [ERROR] Invalid Phone Number: 0221564694
-[04-Feb-2025 09:03:16 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 09:03:16 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"9109086124088","phone_number":"0728565885","partner_code":"0000"}
-[04-Feb-2025 09:03:16 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 09:03:16 Africa/Johannesburg] [LOGGER] [INFO] ✅ New user registered: 40 | Partner ID: 1 | Delayed Payback: 4
-[04-Feb-2025 09:03:16 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 40
-[04-Feb-2025 09:03:16 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"9f705d8c6a796e02aff3879f51a0fc22e1c46537e02ac2ee11547a54a420e5c7"}
-[04-Feb-2025 09:03:16 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 9f705d8c6a796e02aff3879f51a0fc22e1c46537e02ac2ee11547a54a420e5c7
-[04-Feb-2025 09:03:16 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 09:15:32 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"9f705d8c6a796e02aff3879f51a0fc22e1c46537e02ac2ee11547a54a420e5c7"}
-[04-Feb-2025 09:15:32 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 9f705d8c6a796e02aff3879f51a0fc22e1c46537e02ac2ee11547a54a420e5c7
-[04-Feb-2025 09:15:32 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 09:15:37 Africa/Johannesburg] [LOGGER] [ERROR] Logout failed: No user token provided.
-[04-Feb-2025 09:15:57 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 09:15:57 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0715556666","partner_code":"0000"}
-[04-Feb-2025 09:15:57 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 09:15:57 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 09:15:57 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 09:15:57 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 09:15:57 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 09:40:26 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 09:40:26 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"0410035349084","phone_number":"0646215416","partner_code":null}
-[04-Feb-2025 09:40:26 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: None, Delayed Payback: 0
-[04-Feb-2025 09:40:26 Africa/Johannesburg] [LOGGER] [INFO] ✅ New user registered: 41 | Partner ID: None | Delayed Payback: 0
-[04-Feb-2025 09:40:26 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 41
-[04-Feb-2025 09:40:27 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"0b8ebce533e7d77215c7fe4e94680e680dffbe087417cae70de37ec4e89e4dc3"}
-[04-Feb-2025 09:40:27 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 0b8ebce533e7d77215c7fe4e94680e680dffbe087417cae70de37ec4e89e4dc3
-[04-Feb-2025 09:40:27 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 09:40:33 Africa/Johannesburg] [LOGGER] [ERROR] Missing user token in request.
-[04-Feb-2025 09:41:03 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"0b8ebce533e7d77215c7fe4e94680e680dffbe087417cae70de37ec4e89e4dc3"}
-[04-Feb-2025 09:41:03 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 0b8ebce533e7d77215c7fe4e94680e680dffbe087417cae70de37ec4e89e4dc3
-[04-Feb-2025 09:41:03 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 09:41:20 Africa/Johannesburg] [LOGGER] [ERROR] Logout failed: No user token provided.
-[04-Feb-2025 09:41:34 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 09:41:34 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"0410035349084","phone_number":"0646215416","partner_code":null}
-[04-Feb-2025 09:41:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: None, Delayed Payback: 0
-[04-Feb-2025 09:41:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 41
-[04-Feb-2025 09:41:34 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"614432377478dc57d33b557fd0827dff2b6d2b4ef0bd4b4d071cab1e61b12084"}
-[04-Feb-2025 09:41:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 614432377478dc57d33b557fd0827dff2b6d2b4ef0bd4b4d071cab1e61b12084
-[04-Feb-2025 09:41:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 10:49:28 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 10:49:28 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"0410035349048","phone_number":"0646215416","partner_code":null}
-[04-Feb-2025 10:49:28 Africa/Johannesburg] [LOGGER] [ERROR] Failed ID Validation - Invalid Luhn Checksum for ID 0410035349048
-[04-Feb-2025 10:49:28 Africa/Johannesburg] [LOGGER] [ERROR] Invalid ID Number: 0410035349048
-[04-Feb-2025 10:49:41 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 10:49:41 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"0410035349084","phone_number":"0646215416","partner_code":null}
-[04-Feb-2025 10:49:41 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: None, Delayed Payback: 0
-[04-Feb-2025 10:49:41 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 41
-[04-Feb-2025 10:49:42 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"f11264c9addd1684834d20f7728091b0beea7dd17984f39671699a314f1452f3"}
-[04-Feb-2025 10:49:42 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: f11264c9addd1684834d20f7728091b0beea7dd17984f39671699a314f1452f3
-[04-Feb-2025 10:49:42 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 10:50:49 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 10:50:49 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0823157007","partner_code":null}
-[04-Feb-2025 10:50:49 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: None, Delayed Payback: 0
-[04-Feb-2025 10:50:49 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 10:50:50 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"c630f62ecffe4a265840e8cac6f27c5aa45df623708b7c4cc3fc9508505e2ffc"}
-[04-Feb-2025 10:50:50 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: c630f62ecffe4a265840e8cac6f27c5aa45df623708b7c4cc3fc9508505e2ffc
-[04-Feb-2025 10:50:50 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 10:51:05 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"c630f62ecffe4a265840e8cac6f27c5aa45df623708b7c4cc3fc9508505e2ffc"}
-[04-Feb-2025 10:51:05 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: c630f62ecffe4a265840e8cac6f27c5aa45df623708b7c4cc3fc9508505e2ffc
-[04-Feb-2025 10:51:05 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 10:51:27 Africa/Johannesburg] [LOGGER] [ERROR] Logout failed: No user token provided.
-[04-Feb-2025 11:55:47 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 11:55:47 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 11:55:47 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 11:56:33 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 11:56:33 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 11:56:33 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 11:56:34 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 11:56:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 11:56:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 11:56:34 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 11:56:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 11:56:34 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 11:58:43 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 11:58:43 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 11:58:43 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:01:36 Africa/Johannesburg] [LOGGER] [INFO] User API accessed. Received Data: []
-[04-Feb-2025 12:01:36 Africa/Johannesburg] [LOGGER] [INFO] Received Data: {"id_number":"7903115137083","phone_number":"0829208577","partner_code":"0000"}
-[04-Feb-2025 12:01:36 Africa/Johannesburg] [LOGGER] [INFO] ✅ Retrieved Partner ID: 1, Delayed Payback: 4
-[04-Feb-2025 12:01:36 Africa/Johannesburg] [LOGGER] [INFO] ✅ Token issued for user_id: 1
-[04-Feb-2025 12:01:36 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:01:36 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:01:36 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:02:42 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:02:42 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:02:42 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:02:47 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:02:47 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:02:47 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:08:05 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:08:05 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:08:05 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:08:07 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:08:07 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:08:07 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:08:17 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:08:17 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:08:17 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:08:18 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:08:18 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:08:18 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:08:59 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:08:59 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:08:59 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:09:30 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:09:30 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:09:30 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:10:15 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:10:15 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:10:15 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:12:04 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:12:04 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:12:04 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:13:30 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:13:30 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:13:30 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:13:35 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:13:35 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:13:35 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:14:24 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:14:24 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:14:24 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:14:36 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:14:36 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:14:36 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:15:20 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:15:20 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:15:20 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:15:22 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:15:22 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:15:22 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:15:26 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:15:26 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:15:26 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:15:31 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:15:31 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:15:31 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:16:00 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:16:00 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:16:00 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:16:03 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:16:03 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:16:03 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:16:07 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:16:07 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:16:07 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:16:09 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:16:09 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:16:09 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:16:15 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:16:15 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:16:15 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:16:17 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:16:17 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:16:17 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:16:21 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465"}
-[04-Feb-2025 12:16:21 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: 438d9e6076c685d0045c7ce07e2ab40ebb25c13c5a41145f4454abd322511465
-[04-Feb-2025 12:16:21 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
-[04-Feb-2025 12:16:58 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b"}
-[04-Feb-2025 12:16:58 Africa/Johannesburg] [LOGGER] [INFO] ✅ Using user_token: ad0246a30e11bd39d0e1460e3a027afe24c1c82ab1aea3bb2ebf1720124ddc0b
-[04-Feb-2025 12:16:58 Africa/Johannesburg] [LOGGER] [INFO] ✅ Loan history retrieved successfully.
+[05-Feb-2025 04:28:47 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:28:47 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:28:47 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:28:47 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:28:47 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 2, Max Delayed Payback: 2
+[05-Feb-2025 04:28:47 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 2, Max Delayed Payback: 2
+[05-Feb-2025 04:28:47 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 04:28:47 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 04:28:47 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:28:47 Africa/Johannesburg] [LOGGER] [INFO] Using user_token: 8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be
+[05-Feb-2025 04:28:47 Africa/Johannesburg] [LOGGER] [INFO] User ID Retrieved: 1
+[05-Feb-2025 04:28:47 Africa/Johannesburg] [LOGGER] [INFO] Loan History Query Result: [{"created_at":"2025-02-04 13:59:49","amount":"2500.00","term":4,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 13:27:31","amount":"1000.00","term":1,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 08:32:18","amount":"1500.00","term":3,"status":"Rejected","settled":"No"},{"created_at":"2025-02-04 08:08:41","amount":"1500.00","term":3,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 07:58:04","amount":"500.00","term":1,"status":"Approved","settled":"No"}]
+[05-Feb-2025 04:29:34 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:34 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:34 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 04:29:34 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 04:29:34 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:34 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:34 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 04:29:34 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 04:29:34 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:34 Africa/Johannesburg] [LOGGER] [INFO] Using user_token: 8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be
+[05-Feb-2025 04:29:34 Africa/Johannesburg] [LOGGER] [INFO] User ID Retrieved: 1
+[05-Feb-2025 04:29:34 Africa/Johannesburg] [LOGGER] [INFO] Loan History Query Result: [{"created_at":"2025-02-04 13:59:49","amount":"2500.00","term":4,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 13:27:31","amount":"1000.00","term":1,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 08:32:18","amount":"1500.00","term":3,"status":"Rejected","settled":"No"},{"created_at":"2025-02-04 08:08:41","amount":"1500.00","term":3,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 07:58:04","amount":"500.00","term":1,"status":"Approved","settled":"No"}]
+[05-Feb-2025 04:29:37 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:37 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:37 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:37 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 04:29:37 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:37 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 04:29:37 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 04:29:37 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 04:29:37 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:37 Africa/Johannesburg] [LOGGER] [INFO] Using user_token: 8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be
+[05-Feb-2025 04:29:37 Africa/Johannesburg] [LOGGER] [INFO] User ID Retrieved: 1
+[05-Feb-2025 04:29:37 Africa/Johannesburg] [LOGGER] [INFO] Loan History Query Result: [{"created_at":"2025-02-04 13:59:49","amount":"2500.00","term":4,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 13:27:31","amount":"1000.00","term":1,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 08:32:18","amount":"1500.00","term":3,"status":"Rejected","settled":"No"},{"created_at":"2025-02-04 08:08:41","amount":"1500.00","term":3,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 07:58:04","amount":"500.00","term":1,"status":"Approved","settled":"No"}]
+[05-Feb-2025 04:29:45 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:45 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:45 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 04:29:45 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 04:29:45 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:45 Africa/Johannesburg] [LOGGER] [INFO] Using user_token: 8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be
+[05-Feb-2025 04:29:45 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:45 Africa/Johannesburg] [LOGGER] [INFO] User ID Retrieved: 1
+[05-Feb-2025 04:29:45 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:45 Africa/Johannesburg] [LOGGER] [ERROR] Missing required fields. Received: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:45 Africa/Johannesburg] [LOGGER] [INFO] Loan History Query Result: [{"created_at":"2025-02-04 13:59:49","amount":"2500.00","term":4,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 13:27:31","amount":"1000.00","term":1,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 08:32:18","amount":"1500.00","term":3,"status":"Rejected","settled":"No"},{"created_at":"2025-02-04 08:08:41","amount":"1500.00","term":3,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 07:58:04","amount":"500.00","term":1,"status":"Approved","settled":"No"}]
+[05-Feb-2025 04:29:50 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:50 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0825546587","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:50 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 04:29:50 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 04:29:50 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:50 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:50 Africa/Johannesburg] [LOGGER] [INFO] Using user_token: 8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be
+[05-Feb-2025 04:29:50 Africa/Johannesburg] [LOGGER] [INFO] User ID Retrieved: 1
+[05-Feb-2025 04:29:50 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:50 Africa/Johannesburg] [LOGGER] [ERROR] Missing required fields. Received: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:29:50 Africa/Johannesburg] [LOGGER] [INFO] Loan History Query Result: [{"created_at":"2025-02-04 13:59:49","amount":"2500.00","term":4,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 13:27:31","amount":"1000.00","term":1,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 08:32:18","amount":"1500.00","term":3,"status":"Rejected","settled":"No"},{"created_at":"2025-02-04 08:08:41","amount":"1500.00","term":3,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 07:58:04","amount":"500.00","term":1,"status":"Approved","settled":"No"}]
+[05-Feb-2025 04:29:52 Africa/Johannesburg] [LOGGER] [ERROR] Logout failed: No user token provided.
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0853332654","partner_code":null}
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0853332654","partner_code":null}
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0853332654","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0853332654","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] Using user_token: 8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] User ID Retrieved: 1
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] Loan History Query Result: [{"created_at":"2025-02-04 13:59:49","amount":"2500.00","term":4,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 13:27:31","amount":"1000.00","term":1,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 08:32:18","amount":"1500.00","term":3,"status":"Rejected","settled":"No"},{"created_at":"2025-02-04 08:08:41","amount":"1500.00","term":3,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 07:58:04","amount":"500.00","term":1,"status":"Approved","settled":"No"}]
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 04:57:51 Africa/Johannesburg] [LOGGER] [ERROR] Missing required fields. Received: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 05:05:20 Africa/Johannesburg] [LOGGER] [ERROR] Logout failed: No user token provided.
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0644484546","partner_code":null}
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0644484546","partner_code":null}
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0644484546","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0644484546","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] Using user_token: 8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] User ID Retrieved: 1
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] Loan History Query Result: [{"created_at":"2025-02-04 13:59:49","amount":"2500.00","term":4,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 13:27:31","amount":"1000.00","term":1,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 08:32:18","amount":"1500.00","term":3,"status":"Rejected","settled":"No"},{"created_at":"2025-02-04 08:08:41","amount":"1500.00","term":3,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 07:58:04","amount":"500.00","term":1,"status":"Approved","settled":"No"}]
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 05:05:39 Africa/Johannesburg] [LOGGER] [ERROR] Missing required fields. Received: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 05:10:06 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0605558888","partner_code":null}
+[05-Feb-2025 05:10:06 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0605558888","partner_code":null}
+[05-Feb-2025 05:10:06 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 05:10:06 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 05:23:15 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0665554548","partner_code":null}
+[05-Feb-2025 05:23:15 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0665554548","partner_code":null}
+[05-Feb-2025 05:23:15 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 05:23:15 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 05:27:14 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0688888888","partner_code":null}
+[05-Feb-2025 05:27:14 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0688888888","partner_code":null}
+[05-Feb-2025 05:27:14 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 05:27:14 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 05:28:21 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0668888888","partner_code":null}
+[05-Feb-2025 05:28:21 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0668888888","partner_code":null}
+[05-Feb-2025 05:28:21 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 05:28:21 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 05:31:08 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0666666666","partner_code":null}
+[05-Feb-2025 05:31:08 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0666666666","partner_code":null}
+[05-Feb-2025 05:31:08 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 05:31:08 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 05:40:57 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0666666666","partner_code":null}
+[05-Feb-2025 05:40:57 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0666666666","partner_code":null}
+[05-Feb-2025 05:40:57 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 05:40:57 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0665545454","partner_code":null}
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0665545454","partner_code":null}
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] Raw input received: {"user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] Using user_token: 8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] User ID Retrieved: 1
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] Loan History Query Result: [{"created_at":"2025-02-04 13:59:49","amount":"2500.00","term":4,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 13:27:31","amount":"1000.00","term":1,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 08:32:18","amount":"1500.00","term":3,"status":"Rejected","settled":"No"},{"created_at":"2025-02-04 08:08:41","amount":"1500.00","term":3,"status":"Approved","settled":"No"},{"created_at":"2025-02-04 07:58:04","amount":"500.00","term":1,"status":"Approved","settled":"No"}]
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0665545454","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0665545454","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] Raw POST Data: {"id_number":"7903115137083","phone_number":"0665545454","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] Received JSON Data: {"id_number":"7903115137083","phone_number":"0665545454","user_token":"8048868dca8be2c70057607187bc0a607ed3e2481aae8610da95c60ba51083be"}
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] User Data - User ID: 1, Partner ID: 1, Delayed Payback: 1, Max Delayed Payback: 2
+[05-Feb-2025 05:43:32 Africa/Johannesburg] [LOGGER] [INFO] Using existing token for user_id: 1

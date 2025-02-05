@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    console_Log("✅ apply.js is executing!");
+    console_Log("apply.js is executing!");
 
     const amountInput = document.getElementById("amount");
     const termSelect = document.getElementById("term");
@@ -10,186 +10,211 @@ document.addEventListener("DOMContentLoaded", async () => {
     const loanForm = document.getElementById("loanForm");
 
     if (!loanSection || !pendingApplication || !logoutButton) {
-        console_Error("❌ Critical Error: Required elements not found in apply.html");
+        console.error("Critical Error: Required elements not found in apply.html");
         return;
     }
 
-if (loanForm) {
-    loanForm.addEventListener("submit", async (event) => {
-        event.preventDefault(); // Prevent page reload
+    window.fetchUserData = async function fetchUserData() {
+        console_Log("fetchUserData() is being called");
 
-        const userToken = localStorage.getItem("user_token");
+        let idNumber = localStorage.getItem("id_number");
+        let phoneNumber = localStorage.getItem("phone_number");
+        let userToken = localStorage.getItem("user_token");
+
+        console_Log("Stored id_number:", idNumber);
+        console_Log("Stored phone_number:", phoneNumber);
+        console_Log("Stored user_token before API call:", userToken);
+
+        console_Log("Sending API request with:", JSON.stringify({ 
+            id_number: idNumber.toString().trim(), 
+            phone_number: phoneNumber.toString().trim(),
+            user_token: userToken 
+        }));
+
+        try {
+            const response = await fetch("/server/api/user.php", {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({ 
+                    id_number: idNumber.toString().trim(), 
+                    phone_number: phoneNumber.toString().trim(),
+                    user_token: userToken
+                })
+            });
+
+            const responseText = await response.text();
+            console_Log("Raw User Data API Response:", responseText);
+
+            const data = JSON.parse(responseText);
+            console_Log("Parsed User Data:", data);
+
+            if (data.error) {
+                console_Error("API Error:", data.error);
+                return;
+            }
+
+            if (data.user_token) {
+                localStorage.setItem("user_token", data.user_token);
+                console_Log("Updated user_token from API:", data.user_token);
+                userToken = data.user_token;
+            }
+
+        } catch (error) {
+            console_Error("Error fetching user data:", error);
+        }
+    };
+
+    async function fetchLoanHistory(token) {
+        console_Log("Fetching loan history...");
+
+        let userToken = localStorage.getItem("user_token");
+        console_Log("Using updated user_token for Loan History API:", userToken);
+
         if (!userToken) {
-            console_Error("❌ No user token found. Redirecting to login.");
-            window.location.href = "/login.html";
+            console_Error("Missing user token! Cannot fetch loan history.");
             return;
         }
 
-        const amount = document.getElementById("amount").value;
-        const term = document.getElementById("term").value;
-        const followingPayday = document.getElementById("followingPayday").checked;
+        try {
+            const response = await fetch("/server/api/loan_history.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_token: userToken })
+            });
 
-        if (!amount || !term) {
-            console_Error("❌ Loan amount or term is missing.");
-            return;
+            const responseText = await response.text();
+            console_Log("Raw Loan History API Response:", responseText);
+
+            const data = JSON.parse(responseText);
+            console_Log("Parsed Loan History Data:", data);
+
+            if (data.error) {
+                console_Error("Loan History API Error:", data.error);
+                return;
+            }
+
+            if (!data.loans || data.loans.length === 0) {
+                console_Log("No loan history available.");
+                return;
+            }
+
+            console_Log("Loan history retrieved successfully. Updating table...");
+
+            const tableBody = document.querySelector("#loanHistoryTable tbody");
+
+            if (!tableBody) {
+                console_Error("Loan History Table Not Found in HTML.");
+                return;
+            }
+
+            tableBody.innerHTML = "";
+
+            data.loans.forEach(loan => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${new Date(loan.created_at).toLocaleDateString()}</td>
+                    <td>R${parseFloat(loan.amount).toFixed(2)}</td>
+                    <td>${loan.term} months</td>
+                    <td>${loan.status}</td>
+                    <td>${loan.settled}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            document.getElementById("loanHistoryContainer").style.display = "block";
+            console_Log("Loan history displayed successfully.");
+
+        } catch (error) {
+            console_Error("Error fetching loan history:", error);
         }
+    }
+
+    async function verifyUserState(token) {
+        console_Log("Checking loan status with loan.php:", token);
 
         try {
             const response = await fetch("/server/api/loan.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    user_token: userToken,
-                    amount: amount,
-                    term: term,
-                    followingPayday: followingPayday
-                })
+                body: JSON.stringify({ user_token: token })
             });
 
             const data = await response.json();
+            console_Log("Loan state response:", data);
+
             if (data.error) {
-                console_Error("❌ Loan application failed: " + data.error);
+                console_Error("Authentication error:", data.error);
+                localStorage.removeItem("user_token");
+                window.location.href = "/login.html";
                 return;
             }
 
-            console_Log("✅ Loan application successful: " + JSON.stringify(data));
-            alert("Loan Application Submitted Successfully!");
+            fetchLoanHistory(token); 
 
-            // Refresh loan history after submission
-            verifyUserState(userToken);
-        } catch (error) {
-            console_Error("❌ Error submitting loan application: " + error);
-        }
-    });
-}
+            const loanSection = document.getElementById("loanSection");
+            const pendingApplication = document.getElementById("pendingApplication");
+            const followingPaydayContainer = document.getElementById("followingPaydayContainer");
 
-async function verifyUserState(token) {
-    console_Log("🚀 Checking loan status with loan.php:" + token);
-
-    try {
-        const response = await fetch("/server/api/loan.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ user_token: token })
-        });
-
-        const data = await response.json();
-
-
-        if (data.error) {
-            console_Error("❌ Authentication error:" + data.error);
-            localStorage.removeItem("user_token");
-            window.location.href = "/login.html";
-            return;
-        }
-
-        // ✅ Always fetch and display loan history
-        fetchLoanHistory(token);    
-
-        // ✅ Ensure required UI elements exist before modifying them
-        if (!loanSection || !pendingApplication || !followingPaydayContainer) {
-            console_Error("❌ UI Error: Required elements missing in apply.html");
-            return;
-        }
-
-        // ✅ If the user has a pending loan, show "Application Pending" and hide the form
-        if (data.hasPendingLoan) {
-            console.warn("⚠️ User has a pending loan. Showing 'Application Pending' message.");
-            loanSection.style.display = "none";
-            pendingApplication.style.display = "block";
-        } else {
-            loanSection.style.display = "block";
-            pendingApplication.style.display = "none";
-        }
-        
-
-        // ✅ Show "Following Payday" checkbox if eligible
-        followingPaydayContainer.style.display = data.followingPaydayEligible ? "block" : "none";
-
-    } catch (error) {
-        console_Error("❌ Error verifying loan status:" + error);
-    }
-}
-
-// ✅ Fetch Loan History from Backend
-async function fetchLoanHistory(token) {
-    console_Log("🚀 Fetching loan history...");
-    
-    try {
-        const response = await fetch("/server/api/loan_history.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ user_token: token })
-        });
-
-        const data = await response.json();
-
-        if (data.error || !data.loans || data.loans.length === 0) {
-            console.warn("⚠️ No loan history available.");
-            return;
-        }
-
-        const tableBody = document.querySelector("#loanHistoryTable tbody");
-        tableBody.innerHTML = ""; // Clear previous data
-
-        data.loans.forEach(loan => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${new Date(loan.created_at).toLocaleDateString()}</td>
-                <td>R${loan.amount}</td>
-                <td>${loan.term} months</td>
-                <td>${loan.status}</td>
-                <td>${loan.settled}</td>
-            `;
-            tableBody.appendChild(row);
-        });
-
-        document.getElementById("loanHistoryContainer").style.display = "block"; // ✅ Show history table
-
-    } catch (error) {
-        console_Error("❌ Error fetching loan history:" + error);
-    }
-}
-
-    verifyUserState(localStorage.getItem("user_token"));
-
-    // ✅ Ensure Loan Amount Updates Loan Term Dropdown (Only If Loan Form Is Visible)
-    if (amountInput) {
-        amountInput.addEventListener("input", () => {
-            let amount = parseFloat(amountInput.value.replace(/[^\d]/g, ""));
-            console_Log("🚀 Loan amount entered:" + amount);
-
-            if (isNaN(amount)) {
-                termSelect.innerHTML = '<option value="">Select Loan Amount First</option>';
+            if (!loanSection || !pendingApplication || !followingPaydayContainer) {
+                console_Error("UI Error: Required elements missing in apply.html");
                 return;
             }
 
-            let termOptions = [];
-            if (amount >= 500 && amount <= 749) termOptions = [1];
-            else if (amount >= 750 && amount <= 1000) termOptions = [1, 2];
-            else if (amount >= 1001 && amount <= 1500) termOptions = [1, 2, 3];
-            else if (amount >= 1501 && amount <= 2000) termOptions = [1, 2, 3, 4];
-            else if (amount >= 2001 && amount <= 4000) termOptions = [1, 2, 3, 4, 5];
-            else if (amount >= 4001 && amount <= 8000) termOptions = [1, 2, 3, 4, 5, 6];
+            if (data.hasPendingLoan) {
+                console_Log("User has a pending loan. Showing 'Application Pending' message.");
+                loanSection.style.display = "none";
+                pendingApplication.style.display = "block";
+            } else {
+                console_Log("No pending loan. Showing loan application form.");
+                loanSection.style.display = "block";
+                pendingApplication.style.display = "none";
+            }
 
-            console_Log("🚀 Available Terms:" + termOptions);
+            console_Log("Fetching latest user data from server...");
+            await fetchUserData();
 
-            termSelect.innerHTML = termOptions.length
-                ? termOptions.map(term => `<option value="${term}">${term} Month${term > 1 ? "s" : ""}</option>`).join("")
-                : '<option value="">Amount Not Eligible</option>';
-        });
+            if (data.delayed_payback < data.max_delayed_payback) {
+                console_Log("User is eligible for 'Following Payday'. Showing checkbox.");
+                followingPaydayContainer.style.display = "block";
+            } else {
+                console_Log("User is NOT eligible for 'Following Payday'. Hiding checkbox.");
+                followingPaydayContainer.style.display = "none";
+            }
+
+        } catch (error) {
+            console_Error("Error verifying loan status:", error);
+        }
     }
 
-    // ✅ **Handle Logout**
-    logoutButton.addEventListener("click", async () => {
-        localStorage.removeItem("user_token");
-
-        try {
-            await fetch("/server/api/logout.php", { method: "POST", credentials: "include" });
-        } catch (error) {
-            console_Error("❌ Logout failed:" + error);
-        }
-
+    const userToken = localStorage.getItem("user_token");
+    if (!userToken) {
+        console_Error("No user token found. Redirecting to login.");
         window.location.href = "/login.html";
-    });
+        return;
+    }
+
+    console_Log("Calling verifyUserState() on page load...");
+    await verifyUserState(userToken);
+    fetchUserData();
+    window.fetchLoanHistory = fetchLoanHistory;
+
+    if (logoutButton) {
+        logoutButton.addEventListener("click", async () => {
+            console_Log("Logging out user...");
+            localStorage.removeItem("user_token");
+
+            try {
+                await fetch("/server/api/logout.php", { method: "POST", credentials: "include" });
+            } catch (error) {
+                console_Error("Logout failed:", error);
+            }
+
+            window.location.href = "/login.html";
+        });
+    } else {
+        console_Error("Logout button not found in DOM.");
+    }
 });

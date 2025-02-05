@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console_Log("🚀 login.js is executing!");
+    console.log("login.js is executing!");
 
     const loginForm = document.getElementById("loginForm");
     const phoneNumberInput = document.getElementById("phoneNumber");
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const notificationDiv = document.getElementById("notificationMessages");
     
         if (!notificationDiv) {
-            console_Error("❌ Notification div not found.");
+            console.error("Notification div not found.");
             return;
         }
     
@@ -16,21 +16,20 @@ document.addEventListener("DOMContentLoaded", () => {
         notificationDiv.className = `notification-messages ${type}`;
         notificationDiv.style.display = "block";
     
-        // Auto-hide after 5 seconds
         setTimeout(() => {
             notificationDiv.style.display = "none";
         }, 5000);
     }
 
     document.getElementById("idNumber").addEventListener("input", function () {
-        this.value = this.value.replace(/\D/g, "").slice(0, 13); // Remove non-numeric characters and limit to 13
+        this.value = this.value.replace(/\D/g, "").slice(0, 13); 
     });
 
     phoneNumberInput.addEventListener("input", function (event) {
-        let input = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+        let input = event.target.value.replace(/\D/g, ""); 
         let formattedNumber = "";
 
-        if (input.length > 10) input = input.substring(0, 10); // Limit to 10 digits
+        if (input.length > 10) input = input.substring(0, 10); 
 
         if (input.length > 6) {
             formattedNumber = `(${input.substring(0, 3)}) ${input.substring(3, 6)} - ${input.substring(6)}`;
@@ -42,17 +41,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         event.target.value = formattedNumber;
     });
-/*
-    loginForm_OLD.addEventListener("submit", async (e) => {
+
+    loginForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        console_Log("🚀 Form submitted! Sending data...");
+        console.log("Form submitted! Sending data...");
 
         const idNumber = document.getElementById("idNumber").value.trim();
-        const phoneNumber = phoneNumberInput.value.replace(/\D/g, ""); // Remove formatting for submission
+        const phoneNumber = phoneNumberInput.value.replace(/\D/g, "");
         const partnerCode = localStorage.getItem("partner_code") || null;
-        
-        console_Log("🚀 Using partner code:" + partnerCode);
+
+        console.log("Using partner code:", partnerCode);
 
         const requestData = { id_number: idNumber, phone_number: phoneNumber, partner_code: partnerCode };
 
@@ -66,62 +65,43 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await response.json();
 
             if (data.error) {
-                console_Error("Authentication error:" + data.error);
-                alert("❌ " + data.error);
+                console.error("Authentication error:", data.error);
+                updateNotification(data.error, "error");
                 return;
             }
 
-            console_Log("✅ Login successful! Redirecting to loan application...");
+            console.log("Login successful! Storing new user token...");
+
+            localStorage.removeItem("user_token");
             localStorage.setItem("user_token", data.user_token);
-            localStorage.setItem("user_id", idNumber);
-            localStorage.setItem("phone_number", phoneNumber);
+            console.log("Stored user_token:", data.user_token);
+
+            if (data.user_token) {
+                console.log("Login successful! Storing new user token...");
+            
+                localStorage.setItem("user_token", data.user_token); // ✅ Always update the token
+                console.log("Stored user_token:", data.user_token);
+            }
+            
+            if (data.id_number) {
+                localStorage.setItem("id_number", data.id_number);
+                console.log("Stored id_number:", data.id_number);
+            } else {
+                console.warn("Warning: id_number missing from API response.");
+            }
+            
+            if (data.phone_number) {
+                localStorage.setItem("phone_number", data.phone_number);
+                console.log("Stored phone_number:", data.phone_number);
+            } else {
+                console.warn("Warning: phone_number missing from API response.");
+            }
+
 
             window.location.href = "/apply.html";
         } catch (error) {
-            console_Error("❌ Login error:" + error);
+            console.error("Login error:", error);
+            updateNotification("Server error. Please try again later.", "error");
         }
     });
-*/
-
-loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    console_Log("🚀 Form submitted! Sending data...");
-
-    const idNumber = document.getElementById("idNumber").value.trim();
-    const phoneNumber = phoneNumberInput.value.replace(/\D/g, ""); // Remove formatting for submission
-    const partnerCode = localStorage.getItem("partner_code") || null;
-
-    console_Log("🚀 Using partner code:" + partnerCode);
-
-    const requestData = { id_number: idNumber, phone_number: phoneNumber, partner_code: partnerCode };
-
-    try {
-        const response = await fetch("/server/api/user.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(requestData)
-        });
-
-        const data = await response.json();
-
-        if (data.error) {
-            console_Error("Authentication error:" + data.error);
-            updateNotification(data.error, "error"); // ✅ Show error message
-            return;
-        }
-
-        console_Log("✅ Login successful! Redirecting to loan application...");
-        localStorage.setItem("user_token", data.user_token);
-        localStorage.setItem("user_id", idNumber);
-        localStorage.setItem("phone_number", phoneNumber);
-
-        window.location.href = "/apply.html";
-    } catch (error) {
-        console_Error("❌ Login error:" + error);
-        updateNotification("Server error. Please try again later.", "error"); // ✅ Show server error
-    }
-});
-
-
 });
