@@ -15,15 +15,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     window.fetchUserData = async function fetchUserData() {
-        console_Log("fetchUserData() is being called");
 
-        let idNumber = localStorage.getItem("id_number");
-        let phoneNumber = localStorage.getItem("phone_number");
-        let userToken = localStorage.getItem("user_token");
+    console_Log("fetchUserData() is being called");
 
-        console_Log("Stored id_number:", idNumber);
-        console_Log("Stored phone_number:", phoneNumber);
-        console_Log("Stored user_token before API call:", userToken);
+    let idNumber = localStorage.getItem("id_number");
+    let phoneNumber = localStorage.getItem("phone_number");
+    let userToken = localStorage.getItem("user_token");
+
+    console_Log("Stored id_number:", idNumber);
+    console_Log("Stored phone_number:", phoneNumber);
+    console_Log("Stored user_token before API call:", userToken);
 
         console_Log("Sending API request with:", JSON.stringify({ 
             id_number: idNumber.toString().trim(), 
@@ -31,41 +32,42 @@ document.addEventListener("DOMContentLoaded", async () => {
             user_token: userToken 
         }));
 
-        try {
-            const response = await fetch("/server/api/user.php", {
-                method: "POST",
-                headers: { 
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify({ 
-                    id_number: idNumber.toString().trim(), 
-                    phone_number: phoneNumber.toString().trim(),
-                    user_token: userToken
-                })
-            });
+    try {
+        const response = await fetch("/server/api/user.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                id_number: idNumber.toString().trim(),
+                phone_number: phoneNumber.toString().trim(),
+                user_token: userToken
+            })
+        });
 
-            const responseText = await response.text();
-            console_Log("Raw User Data API Response:", responseText);
+        const data = await response.json();
+        console_Log("Parsed User Data:", data);
 
-            const data = JSON.parse(responseText);
-            console_Log("Parsed User Data:", data);
-
-            if (data.error) {
-                console_Error("API Error:", data.error);
-                return;
-            }
-
-            if (data.user_token) {
-                localStorage.setItem("user_token", data.user_token);
-                console_Log("Updated user_token from API:", data.user_token);
-                userToken = data.user_token;
-            }
-
-        } catch (error) {
-            console_Error("Error fetching user data:", error);
+        if (data.error) {
+            console_Error("API Error:", data.error);
+            return;
         }
-    };
+
+        console_Log("** User Payback:", data.delayed_payback);
+        console_Log("** Partner Payback:", data.max_delayed_payback);
+        if (data.delayed_payback < data.max_delayed_payback) {
+            console_Log("User is eligible for 'Following Payday'. Showing checkbox.");
+            document.getElementById("followingPaydayContainer").style.display = "block";
+        } else {
+            console_Log("User is NOT eligible for 'Following Payday'. Hiding checkbox.");
+            document.getElementById("followingPaydayContainer").style.display = "none";
+        }
+
+    } catch (error) {
+        console_Error("Error fetching user data:", error);
+    }
+};
 
     async function fetchLoanHistory(token) {
         console_Log("Fetching loan history...");
@@ -97,8 +99,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             if (!data.loans || data.loans.length === 0) {
+            document.getElementById("loanHistoryContainer").style.display = "none";                
                 console_Log("No loan history available.");
                 return;
+            } else {
+            document.getElementById("loanHistoryContainer").style.display = "block";
+            console_Log("Loan history displayed successfully.");                
             }
 
             console_Log("Loan history retrieved successfully. Updating table...");
@@ -124,8 +130,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 tableBody.appendChild(row);
             });
 
-            document.getElementById("loanHistoryContainer").style.display = "block";
-            console_Log("Loan history displayed successfully.");
+
 
         } catch (error) {
             console_Error("Error fetching loan history:", error);
@@ -189,6 +194,25 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
+    /**
+     * Show Notification Message
+     */
+    function showNotification(message, type) {
+        const notificationDiv = document.getElementById("notificationMessages");
+        if (!notificationDiv) return;
+    
+        notificationDiv.textContent = message;
+        notificationDiv.className = `notification-messages ${type}`;
+        notificationDiv.style.display = "block";
+    
+    // Sets a timer for notification to disappear
+    /*
+        setTimeout(() => {
+            notificationDiv.style.display = "none";
+        }, 10000);
+    */    
+    }
+
     const userToken = localStorage.getItem("user_token");
     if (!userToken) {
         console_Error("No user token found. Redirecting to login.");
@@ -200,6 +224,88 @@ document.addEventListener("DOMContentLoaded", async () => {
     await verifyUserState(userToken);
     fetchUserData();
     window.fetchLoanHistory = fetchLoanHistory;
+
+    if (amountInput) {
+        amountInput.addEventListener("input", () => {
+            let amount = parseFloat(amountInput.value.replace(/[^\d]/g, ""));
+            console.log("Loan amount entered:" + amount);
+
+            if (isNaN(amount)) {
+                termSelect.innerHTML = '<option value="">Select Loan Amount First</option>';
+                return;
+            }
+
+            let termOptions = [];
+            if (amount >= 500 && amount <= 749) termOptions = [1];
+            else if (amount >= 750 && amount <= 1000) termOptions = [1, 2];
+            else if (amount >= 1001 && amount <= 1500) termOptions = [1, 2, 3];
+            else if (amount >= 1501 && amount <= 2000) termOptions = [1, 2, 3, 4];
+            else if (amount >= 2001 && amount <= 4000) termOptions = [1, 2, 3, 4, 5];
+            else if (amount >= 4001 && amount <= 8000) termOptions = [1, 2, 3, 4, 5, 6];
+
+            termSelect.innerHTML = termOptions.length
+                ? termOptions.map(term => `<option value="${term}">${term} Month${term > 1 ? "s" : ""}</option>`).join("")
+                : '<option value="">Amount Not Eligible</option>';
+        });
+    }
+
+if (loanForm) {
+    loanForm.addEventListener("submit", async (event) => {
+        event.preventDefault(); 
+
+        const userToken = localStorage.getItem("user_token");
+        if (!userToken) {
+            console_Error("No user token found. Redirecting to login.");
+            showNotification("Session expired. Redirecting to login...", "error");
+            window.location.href = "/login.html";
+            return;
+        }
+
+        const amount = document.getElementById("amount").value;
+        const term = document.getElementById("term").value;
+        const followingPayday = document.getElementById("followingPayday").checked;
+
+        if (!amount || !term) {
+            console_Error("Loan amount or term is missing.");
+            showNotification("Loan amount or term is missing.", "error");
+            return;
+        }
+
+        try {
+            const response = await fetch("/server/api/loan.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    user_token: userToken,
+                    amount: amount,
+                    term: term,
+                    followingPayday: followingPayday
+                })
+            });
+
+            const data = await response.json();
+            console_Log("Loan API Response:", data);
+
+            // ✅ Display the exact message from the API response
+            if (data.error) {
+                console_Error("Loan application failed: " + data.message);
+                showNotification(data.message || "An error occurred while processing your loan.", "error");
+                return;
+            }
+
+            // ✅ If successful, show success message from API
+            showNotification(data.message || "Loan Application Submitted Successfully!", "success");
+
+            // Refresh loan state
+            verifyUserState(userToken);
+        } catch (error) {
+            console_Error("Error submitting loan application:", error);
+            showNotification("An unexpected error occurred. Please try again.", "error");
+        }
+    });
+}
+
+
 
     if (logoutButton) {
         logoutButton.addEventListener("click", async () => {

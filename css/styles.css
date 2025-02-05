@@ -51,11 +51,13 @@ table {
     font-size: 1.3rem;
     font-weight: 600;
     width: 100%;
+    margin-bottom: 15px;
     text-align: center;
     position: relative;
     z-index: 1000;
-}
 
+}
+/*    color: #3B1E08;*/
 /* Main Wrapper */
 .wrapper {
     display: flex;
@@ -68,20 +70,20 @@ table {
 /* Main Container */
 .container {
     background: white;
-    padding: 35px 10px;
+    padding: 20px 10px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
     text-align: center;
     width: 60%;
     max-width: 320px;
-    margin: 25px auto;
+    margin: 15px auto;
 }
 
 /* Notification Messages */
 .notification-messages {
     padding: 10px;
     font-size: 1rem;
-    margin: 5px auto;
+    margin: 20px auto;
     max-width: 300px;
     text-align: center;
     border-radius: 5px;
@@ -197,7 +199,7 @@ button:active {
     font-size: 12px; /* Smaller font size */
     margin-bottom: 2px; /* Reduces space below the text */
     font-weight: bold; /* Keeps it readable */
-    padding-bottom: 15px;
+    padding-bottom: 0px;
 }
 
 /* Centered Loan History Table */
@@ -218,7 +220,7 @@ button:active {
 /* Table Headers */
 #loanHistoryTable th {
     background-color: #f4f4f4;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: bold;
 }
 

@@ -49,7 +49,7 @@ class Logger {
         file_put_contents($logFile, $logMessage, FILE_APPEND);
 
         // ✅ Debug: Log whether console logging is enabled
-        $logFilePath = $logDir . "errors.log";
+        $logFilePath = $logDir . "general_logger_errors.log";
 
         /*
         if (!file_put_contents($logFilePath, "🔍 Debug: Logger Console Setting = " . json_encode(self::$settings['logging']['console']) . PHP_EOL, FILE_APPEND)) {

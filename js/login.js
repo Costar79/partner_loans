@@ -22,17 +22,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.getElementById("idNumber").addEventListener("input", function () {
-        this.value = this.value.replace(/\D/g, "").slice(0, 13); 
+        this.value = this.value.replace(/\D/g, "").slice(0, 13);
     });
 
     phoneNumberInput.addEventListener("input", function (event) {
-        let input = event.target.value.replace(/\D/g, ""); 
+        let input = event.target.value.replace(/\D/g, "");
         let formattedNumber = "";
 
-        if (input.length > 10) input = input.substring(0, 10); 
+        if (input.length > 10) input = input.substring(0, 10);
 
         if (input.length > 6) {
-            formattedNumber = `(${input.substring(0, 3)}) ${input.substring(3, 6)} - ${input.substring(6)}`;
+            formattedNumber = `(${input.substring(0, 3)}) ${input.substring(3, 6)}-${input.substring(6)}`;
         } else if (input.length > 3) {
             formattedNumber = `(${input.substring(0, 3)}) ${input.substring(3)}`;
         } else {
@@ -62,6 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(requestData)
             });
 
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
             const data = await response.json();
 
             if (data.error) {
@@ -72,31 +76,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
             console.log("Login successful! Storing new user token...");
 
-            localStorage.removeItem("user_token");
             localStorage.setItem("user_token", data.user_token);
             console.log("Stored user_token:", data.user_token);
 
-            if (data.user_token) {
-                console.log("Login successful! Storing new user token...");
-            
-                localStorage.setItem("user_token", data.user_token); // ✅ Always update the token
-                console.log("Stored user_token:", data.user_token);
-            }
-            
             if (data.id_number) {
                 localStorage.setItem("id_number", data.id_number);
                 console.log("Stored id_number:", data.id_number);
             } else {
                 console.warn("Warning: id_number missing from API response.");
             }
-            
+
             if (data.phone_number) {
                 localStorage.setItem("phone_number", data.phone_number);
                 console.log("Stored phone_number:", data.phone_number);
             } else {
                 console.warn("Warning: phone_number missing from API response.");
             }
-
 
             window.location.href = "/apply.html";
         } catch (error) {

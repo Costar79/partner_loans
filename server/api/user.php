@@ -87,13 +87,48 @@ if ($partner_id) {
     }
 }
 
+
 Logger::logInfo('user_api', "User Data - User ID: $user_id, Partner ID: $partner_id, Delayed Payback: $delayed_payback, Max Delayed Payback: $max_delayed_payback");
 
 // **If the user does not exist, register them**
 if (!$existingUser) {
+
+
+    if (!empty($partner_code)) {
+        $partner_code = trim($partner_code); // Trim spaces
+    
+        // Ensure it's between 1 and 5 alphanumeric characters
+        if (!preg_match("/^[0-9A-Za-z]{1,5}$/", $partner_code)) {
+            Logger::logError('user_api', "Invalid Partner Code Format: $partner_code");
+            //http_response_code(400);
+            echo json_encode(["error" => "Invalid partner code format. Must be 1 to 5 alphanumeric characters."]);
+            exit;
+        }
+    
+        $stmt = $db->prepare("SELECT partner_id, max_delayed_payback FROM partners WHERE partner_code = ?");
+        $stmt->execute([$partner_code]);
+        $partnerData = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if (!$partnerData) {
+            Logger::logError('user_api', "Partner Code Not Found: $partner_code");
+            //http_response_code(400);
+            echo json_encode(["error" => "Invalid partner code"]);
+            exit;
+        }
+        
+        Logger::logInfo('user_api', "PARTNER User Data - User ID: $user_id, Partner ID: $partner_id, Delayed Payback: $delayed_payback, Max Delayed Payback: $max_delayed_payback");
+        
+        $partner_id = $partnerData['partner_id'];
+        //$delayed_payback = $partnerData['max_delayed_payback'] ?? 0; // Ensure it has a default value
+    } else {
+        $partner_id = null; // No partner code provided
+        $delayed_payback = 0;
+    }
+
+        
     try {
-        $stmt = $db->prepare("INSERT INTO users (id_number, partner_id, state, delayed_payback) VALUES (?, ?, 'Active', ?)");
-        $stmt->execute([$id_number, $partner_id, $delayed_payback]);
+        $stmt = $db->prepare("INSERT INTO users (id_number, partner_id, state) VALUES (?, ?, 'Active')");
+        $stmt->execute([$id_number, $partner_id]);
 
         $user_id = $db->lastInsertId();
         if (!$user_id) {

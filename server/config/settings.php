@@ -4,16 +4,16 @@ ini_set('display_errors', 1);
 
 $settings = [
     'logging' => [
-        'console' => true, 
-        'new_phone_number' => true,
-        'token_generation' => true,
+        'console' => false, 
+        'new_phone_number' => false,
+        'token_generation' => false,
         'general_errors' => true,
-        'auth_api' => true,
-        'user_events' => true,
-        'user_errors' => true,
+        'auth_api' => false,
+        'user_events' => false,
+        'user_errors' => false,
         'user_api' => true,
         'errors' => true,
-        'loan_history' => true
+        'loan_history' => false
         
     ],
     'security' => [
