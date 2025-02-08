@@ -242,3 +242,29 @@ button:active {
         padding: 3px;
     }
 }
+
+#nextPayDateContainer {
+    margin-top: 10px;
+}
+
+#nextPayDateContainer label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#nextPayDate {
+    width: 100%; /* Make the input wider */
+    max-width: 280px; /* Slightly wider than default */
+    padding: 8px;
+    font-size: 14px; /* Make text inside the input a little smaller */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Remove default blue focus outline and set custom green */
+input:focus, button:focus {
+    outline: 2px solid #1BD793; /* Custom green outline */
+    border-color: #1BD793; /* Optional: Change border color to match */
+    box-shadow: 0 0 5px rgba(27, 215, 147, 0.5); /* Soft green glow effect */
+}
+

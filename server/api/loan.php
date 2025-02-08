@@ -30,7 +30,7 @@ if (!isset($data['user_token'])) {
 
 // ✅ Step 1: Validate User Token & Fetch User State
 $stmt = $db->prepare("
-    SELECT u.user_id, u.state, u.delayed_payback, u.partner_id, p.max_delayed_payback
+    SELECT u.user_id, u.state, u.delayed_payback, u.partner_id, u.payday, p.max_delayed_payback
     FROM users u
     JOIN user_tokens ut ON u.user_id = ut.user_id
     LEFT JOIN partners p ON u.partner_id = p.partner_id
@@ -51,6 +51,7 @@ $user_id = $user['user_id'];
 $user_state = $user['state'];
 $delayed_payback = $user['delayed_payback'] ?? 0;
 $max_delayed_payback = $user['max_delayed_payback'] ?? 0;
+$payday= $user['payday'];
 $hasPartner = !is_null($user['partner_id']);
 
 Logger::logInfo('loan_api', "DEBUG: User ID: $user_id, Partner ID: {$user['partner_id']}, Delayed Payback: $delayed_payback, Max Allowed: $max_delayed_payback");
@@ -102,32 +103,36 @@ if ($followingPayday) {
         Logger::logError('loan_api', "Following Payday denied: Limit reached (User ID: $user_id)");
         echo json_encode(["error" => "You have reached your maximum 'Following Payday' limit."]);
         exit;
-    }
-
+    } 
+/*
+This must be done on approval only
     // ✅ Increment `delayed_payback`
     $stmt = $db->prepare("UPDATE users SET delayed_payback = delayed_payback + 1 WHERE user_id = ?");
     $stmt->execute([$user_id]);
+*/    
 }
 
-// ✅ Step 6: Store Loan Application in Database
-try {
-    $stmt = $db->prepare("INSERT INTO loans (user_id, amount, term, status, settled) VALUES (?, ?, ?, 'Pending', 'No')");
-    $stmt->execute([$user_id, $amount, $term]);
+$start_date = calculateNextPayday($payday,date('Y-m-d'),$followingPayday);
 
-    Logger::logInfo('loan_api', "✅ Loan application submitted successfully (User ID: $user_id, Amount: $amount, Term: $term)");
-
-    echo json_encode([
-        "message" => "Loan application submitted successfully.",
-        "followingPaydayEligible" => $hasPartner && $max_delayed_payback > 0
-    ]);
-    exit;
-
-} catch (PDOException $e) {
-    Logger::logError('general_errors', "Loan application failed: " . $e->getMessage());
-    http_response_code(500);
-    echo json_encode(["error" => "Loan application failed."]);
-    exit;
-}
+    // ✅ Step 6: Store Loan Application in Database
+    try {
+        $stmt = $db->prepare("INSERT INTO loans (user_id, amount, term, status, settled, start_date) VALUES (?, ?, ?, 'Pending', 'No',?)");
+        $stmt->execute([$user_id, $amount, $term, $start_date]);
+    
+        Logger::logInfo('loan_api', "✅ Loan application submitted successfully (User ID: $user_id, Amount: $amount, Term: $term)");
+    
+        echo json_encode([
+            "message" => "Loan application submitted successfully.",
+            "followingPaydayEligible" => $hasPartner && $max_delayed_payback > 0
+        ]);
+        exit;
+    
+    } catch (PDOException $e) {
+        Logger::logError('general_errors', "Loan application failed: " . $e->getMessage());
+        http_response_code(500);
+        echo json_encode(["error" => "Loan application failed."]);
+        exit;
+    } 
 
 Logger::logError('loan_api', "❌ Invalid API request.");
 http_response_code(400);

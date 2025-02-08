@@ -1,7 +1,7 @@
 <?php
 require_once '../../app/utils/Logger.php';
 
-// ✅ **Step 1: Validate ID Number (Must be 13 digits, valid date, age check, citizenship check, and checksum validation)**
+// **Step 1: Validate ID Number (Must be 13 digits, valid date, age check, citizenship check, and checksum validation)**
 function isValidSouthAfricanID($id_number) {
     if (!preg_match('/^[0-9]{13}$/', $id_number)) {
         Logger::logError('user_api', "Failed ID Validation - Incorrect Format: $id_number");
@@ -54,4 +54,79 @@ function validateLuhn($number) {
     }
     return ($sum % 10 == 0);
 }
+
+
+function setValidPayday_OLD($paydayDate) {
+    if (!$paydayDate || !strtotime($paydayDate)) {
+        return "last"; // Default to "last" if invalid
+    }
+
+    $date = new DateTime($paydayDate);
+    $year = $date->format("Y");
+    $month = $date->format("m");
+    $day = (int) $date->format("d");
+
+    $lastDayOfMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+
+    return ($day == $lastDayOfMonth) ? "last" : strval($day); // Always return a string
+}
+
+function setValidPayday($paydayDate) {
+    // Log the received date
+    Logger::logInfo("users_api", "Raw paydayDate received: " . $paydayDate);
+
+    // If the input is empty or not a valid date, return "last"
+    if (empty($paydayDate) || !strtotime($paydayDate)) {
+        Logger::logInfo("users_api", "Invalid paydayDate. Defaulting to 'last'.");
+        return "last";
+    }
+
+    try {
+        // Create DateTime object
+        $date = new DateTime($paydayDate);
+        $year = $date->format("Y");
+        $month = $date->format("m");
+        $day = (int) $date->format("d");
+
+        // Log extracted values
+        Logger::logInfo("users_api", "Parsed paydayDate -> Year: $year, Month: $month, Day: $day");
+
+        // Get the last day of the given month
+        $lastDayOfMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+        Logger::logInfo("users_api", "Last day of $month/$year is $lastDayOfMonth");
+
+        // If it's the last day of the month, return "last"
+        if ($day == $lastDayOfMonth) {
+            Logger::logInfo("users_api", "Payday is the last day of the month. Returning 'last'.");
+            return "last";
+        }
+
+        // Otherwise, return the numeric day as a string
+        Logger::logInfo("users_api", "Processed payday as: " . strval($day));
+        return strval($day);
+    } catch (Exception $e) {
+        Logger::logInfo("users_api", "DateTime parsing failed: " . $e->getMessage());
+        return "last";
+    }
+}
+
+
+function getCurrentPayday($userId, $year, $month) {
+
+    // Determine actual payday
+    if ($payday === "last") {
+        return cal_days_in_month(CAL_GREGORIAN, $month, $year); // Last day of month
+    }
+
+    // Ensure the payday isn't greater than the month's last valid day
+    $payday = intval($payday);
+    $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+
+    return min($payday, $daysInMonth);
+}
+
+
 ?>
+
+
+

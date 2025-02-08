@@ -59,12 +59,13 @@ class Logger {
         
         // ✅ Only log to the browser console if `console` is explicitly `true`
         if (!empty(self::$settings['logging']['console']) && self::$settings['logging']['console'] === true) {
-            error_log("[LOGGER] [{$level}] {$message}"); // ✅ Only logs to error_log, no `<script>` output
+            //error_log("[LOGGER] [{$level}] {$message}"); // ✅ Only logs to error_log, no `<script>` output
         } else {
-            file_put_contents($logFilePath, "❌ Logger attempted console output when disabled" . PHP_EOL, FILE_APPEND);
+            file_put_contents($logFilePath, "[LOGGER ERROR] Logger attempted console output when disabled" . PHP_EOL, FILE_APPEND);
+            error_log("[LOGGER ERROR] [{$level}] {$message}");
             //error_log("❌ Console logging is disabled. Skipping console output.");
         }
-
+        
     }
 }
 ?>
