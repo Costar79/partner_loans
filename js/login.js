@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const nextPayDateContainer = document.getElementById("nextPayDateContainer");
     const nextPayDateInput = document.getElementById("nextPayDate");
     const heading = document.querySelector(".top-bar h2");
+    const submitButton = loginForm.querySelector("button[type='submit']");
 
     // Function to check if a cookie exists
     function getCookie(name) {
@@ -56,6 +57,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (heading) {
             heading.textContent = "Sign up";
         }
+    
+        if (submitButton) {
+        submitButton.textContent = "Sign Up";
+        }    
 
     } else {
         console_Log("User token found, attempting auto-login...");
