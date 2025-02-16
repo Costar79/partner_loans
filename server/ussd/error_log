@@ -1,0 +1,6 @@
+[16-Feb-2025 05:52:58 Africa/Johannesburg] DEBUG: Updated session 'sess-3eyydwxwp' with data: {"phone_number":"27831234567","ussd_type":"1","menu_state":"start"}
+[16-Feb-2025 05:52:58 Africa/Johannesburg] DEBUG: Handling menu for session 'sess-3eyydwxwp' - Current state: 'start', Input: ''
+[16-Feb-2025 05:52:58 Africa/Johannesburg] DEBUG: Current session data before append for 'sess-3eyydwxwp': {"phone_number":"27831234567","ussd_type":"1","menu_state":"start"}
+[16-Feb-2025 05:52:58 Africa/Johannesburg] DEBUG: Updated session data after append for 'sess-3eyydwxwp': {"phone_number":"27831234567","ussd_type":"1","menu_state":"main_menu"}
+[16-Feb-2025 05:52:58 Africa/Johannesburg] DEBUG: Retrieved session data for 'sess-3eyydwxwp': {"id":53,"session_id":"sess-3eyydwxwp","phone_number":"27831234567","ussd_type":"1","menu_state":"main_menu","session_data":"{\"phone_number\":\"27831234567\",\"ussd_type\":\"1\",\"menu_state\":\"main_menu\"}","created_at":"2025-02-16 05:52:58","updated_at":"2025-02-16 05:52:58"}
+[16-Feb-2025 05:52:58 Africa/Johannesburg] DEBUG: Updated session 'sess-3eyydwxwp' with data: {"phone_number":"27831234567","ussd_type":"1","menu_state":"main_menu","input_data":""}

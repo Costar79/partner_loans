@@ -55,22 +55,6 @@ function validateLuhn($number) {
     return ($sum % 10 == 0);
 }
 
-
-function setValidPayday_OLD($paydayDate) {
-    if (!$paydayDate || !strtotime($paydayDate)) {
-        return "last"; // Default to "last" if invalid
-    }
-
-    $date = new DateTime($paydayDate);
-    $year = $date->format("Y");
-    $month = $date->format("m");
-    $day = (int) $date->format("d");
-
-    $lastDayOfMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-
-    return ($day == $lastDayOfMonth) ? "last" : strval($day); // Always return a string
-}
-
 function setValidPayday($paydayDate) {
     // Log the received date
     Logger::logInfo("users_api", "Raw paydayDate received: " . $paydayDate);
@@ -109,7 +93,6 @@ function setValidPayday($paydayDate) {
         return "last";
     }
 }
-
 
 function getCurrentPayday($userId, $year, $month) {
 

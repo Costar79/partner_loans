@@ -31,5 +31,15 @@ class Partner {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getPartnerByUSSD_ID($ussd_id) {
+        if (empty($partner_code)) {
+            return false; // Prevents unnecessary DB query
+        }
+    
+        $stmt = $this->conn->prepare("SELECT partner_id FROM " . $this->table . " WHERE ussd_id = ?");
+        $stmt->execute([$partner_code]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 }
 ?>
