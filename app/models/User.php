@@ -42,7 +42,43 @@ class User {
         return $stmt->execute([$id_number]);
     }
     
-    public function createUserWithPhone($id_number, $phone_number, $partner_id = null) {
+    public function createUserWithPhone($id_number, $phone_number, $partner_id = null, $session_id, $expiry, $device_fingerprint = 'USSD Session') {
+        try {
+
+            $phoneNumber = preg_replace('/^27/', '0', $phone_number);    
+        
+            // Insert user
+            $stmt = $this->conn->prepare("INSERT INTO users (id_number, state, payday, partner_id) VALUES (?, 'Active', 'last', ?)");
+            $stmt->execute([$id_number, $partner_id]);
+            $user_id = $this->conn->lastInsertId();
+    
+            // Insert into user_tokens using session_id as token
+            $stmt = $this->conn->prepare("INSERT INTO user_tokens (user_id, phone_number, token, device_fingerprint, expires_at) 
+                                          VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$user_id, $phoneNumber, $session_id, $device_fingerprint, $expiry]);            
+    
+            return $user_id;
+            
+        } catch (PDOException $e) {
+                if ($e->getCode() == 23000) { // SQLSTATE[23000] - Duplicate entry
+                    //return "Error: ID number or phone number already exists.";
+                    $user = $this->getUserByIdNumber($id_number);
+                    $user_id = $user['user_id'];
+                    error_log('User ID is: ' . $user_id);
+                    // Insert into user_tokens using session_id as token
+                    $stmt = $this->conn->prepare("INSERT INTO user_tokens (user_id, phone_number, token, device_fingerprint, expires_at) 
+                                                  VALUES (?, ?, ?, ?, ?)");
+                    $stmt->execute([$user_id, $phoneNumber, $session_id, $device_fingerprint, $expiry]);                     
+                    
+                    return $user_id;
+                    
+                }
+                return "Error: " . $e->getMessage();
+        }
+    }
+        
+    
+    public function createUserWithPhone_OLD($id_number, $phone_number, $partner_id = null) {
         try {
             // Insert user
             $stmt = $this->conn->prepare("INSERT INTO users (id_number, state, payday, partner_id) VALUES (?, 'Inactive', 'last', ?)");

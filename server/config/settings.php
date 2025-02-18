@@ -14,7 +14,8 @@ $settings = [
         'user_api' => true,
         'loan_api' => true,
         'errors' => true,
-        'loan_history' => true
+        'loan_history' => true,
+        'ussd_entry' => true
         
     ],
     'security' => [

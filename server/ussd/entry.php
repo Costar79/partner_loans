@@ -1,7 +1,31 @@
 <?php
 require_once 'sessions.php';
+require_once 'functions.php';
+require_once '../../app/models/Partner.php';
+require_once '../../app/models/User.php';
+require_once '../../app/utils/Logger.php';
+require_once '../api/user_functions.php';
+require_once '../config/database.php';
+require_once '../config/settings.php';
 
 header('Content-Type: text/plain');
+
+Logger::logInfo("ussd_entry", "Incoming USSD Request: " . json_encode($_GET));
+
+// Initialize database connection
+$database = new Database();
+$db = $database->connect();
+
+Logger::logInfo("ussd_entry", "Connection to DB:" . $database->getDbName());
+
+// Load settings
+$settings = require '../config/settings.php';
+$expiry_days = $settings['security']['token_expiry_days'] ?? 180;
+$expiry = date('Y-m-d H:i:s', strtotime("+$expiry_days days"));
+
+// Initialize models
+$partnerModel = new Partner($db);
+$userModel = new User($db);
 
 // Retrieve GET parameters
 $msisdn = $_GET['ussd_msisdn'] ?? null;
@@ -15,15 +39,64 @@ if (!$msisdn || !$session_id || is_null($ussd_type)) {
     exit;
 }
 
-// Handle session based on ussd_type
+// Handle new session (ussd_type = 1)
 if (!sessionExists($session_id)) {
     if ($ussd_type == 1) {
+        // **Extract the USSD code from the first request**
+        $ussd_code = $ussd_request; 
+
+        // Retrieve user by phone number
+        $phoneNumber = preg_replace('/^27/', '0', $msisdn);
+        $user = $userModel->getUserByPhoneNumber($phoneNumber);
+        
+        
+        if ($user) {
+            // Existing user
+            $user_id = $user['user_id'];
+            $partner_id = $user['partner_id'];
+            $user_state = $user['state']; // Fetch user state
+            $menu_state = "main_menu"; // INITIAL Display menu item
+            
+            error_log("DEBUG: User Information:" . $user_id);
+        
+            $stmt = $db->prepare("SELECT token_id FROM user_tokens WHERE user_id = ? AND phone_number = ? LIMIT 1");
+            $stmt->execute([$user_id, $phoneNumber]);
+            $existingTokenData = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            $token_id = $existingTokenData['token_id'];
+            
+            $stmt = $db->prepare("UPDATE user_tokens SET expires_at = ?, token = ? WHERE token_id = ?");
+            $stmt->execute([$expiry, $session_id, $token_id]);            
+            
+        } else {
+            // New User - Extract partner ID from USSD code
+            preg_match('/\*120\*9902\*(\d{1,3})#/', $ussd_code, $matches);
+            $partner_ussd_id = $matches[1] ?? null;
+
+            // Retrieve partner_id using the USSD partner code
+            $partner = $partnerModel->getPartnerByUSSD_ID($partner_ussd_id);
+            $partner_id = $partner ? $partner['partner_id'] : null;
+
+            // New users must first enter their ID number
+            $menu_state = "validate_id";
+        }
+
+        // **Store all required session data**
         saveSession($session_id, [
+            'user_id' => $user_id ?? null,
             'phone_number' => $msisdn,
+            'partner_id' => $partner_id,
+            'ussd_code' => $ussd_code, // Store the dialed USSD code
+            'user_state' => $user_state ?? 'Inactive', // New users should be 'Inactive' by default
             'ussd_type' => $ussd_type,
-            'menu_state' => 'start'
+            'menu_state' => $menu_state // Determine if user goes to validate_id or main_menu
         ]);
-        $menu_state = "start";
+
+        if ($menu_state === "validate_id") {
+            echo "Enter your South African ID Number:";
+            exit;
+        }
+        
     } else {
         echo "Session not found. Dial again.";
         exit;
@@ -44,77 +117,10 @@ saveSession($session_id, [
 
 // **Centralized Session Closure: Check if session should end**
 if ($response['next_state'] === "end") {
-    echo endSession($session_id, $response['message']);
+    echo endSession($session_id, "Co-Lend Finance\n\n"
+                                . "NCRCP : 18394\n\n"
+                                . $response['message']);
 } else {
     echo $response['message'];
 }
-
-function handleMenu($state, $input, $session_id, $msisdn) {
-    error_log("DEBUG: Handling menu for session '$session_id' - Current state: '$state', Input: '$input'");
-
-    switch ($state) {
-        case "start":
-            appendSessionData($session_id, ['menu_state' => 'main_menu']);
-            return [
-                "message" => "Welcome to Co-Lend Loans\n1. Apply Loan\n2. Check Status",
-                "next_state" => "main_menu"
-            ];
-        case "main_menu":
-            if ($input == "1") {
-                appendSessionData($session_id, ['menu_state' => 'enter_amount']);
-                return ["message" => "Enter loan amount:", "next_state" => "enter_amount"];
-            } elseif ($input == "2") {
-                appendSessionData($session_id, ['menu_state' => 'end']);
-                return ["message" => "Your loan status request is being processed. You will receive an update soon.", "next_state" => "end"];
-            }
-            return ["message" => "Invalid selection. Choose:\n1. Apply Loan\n2. Check Status", "next_state" => "main_menu"];
-        case "enter_amount":
-            appendSessionData($session_id, ['menu_state' => 'enter_term', 'loan_amount' => $input]);
-            return ["message" => "Enter loan term (months):", "next_state" => "enter_term"];
-        case "enter_term":
-            appendSessionData($session_id, ['menu_state' => 'processing', 'loan_term' => $input]);
-            return insertLoan($session_id, $msisdn);
-        default:
-            return ["message" => "Session expired. Dial again.", "next_state" => "start"];
-    }
-}
-
-
-
-function insertLoan($session_id, $msisdn) {
-    global $db;
-
-    // Fetch the latest session data
-    $stmt = $db->prepare("SELECT session_data FROM ussd_sessions WHERE session_id = ?");
-    $stmt->execute([$session_id]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    $session_data = isset($result['session_data']) && is_string($result['session_data'])
-        ? json_decode($result['session_data'], true)
-        : [];
-
-    if (!is_array($session_data)) {
-        $session_data = [];
-    }
-
-    $loan_amount = $session_data['loan_amount'] ?? null;
-    $loan_term = $session_data['loan_term'] ?? null;
-    $phone_number = $session_data['phone_number'] ?? $msisdn;
-
-    error_log("DEBUG: Retrieving loan data in insertLoan(): phone_number='$phone_number', loan_amount='$loan_amount', loan_term='$loan_term'");
-
-    if (!$loan_amount || !$loan_term || !$phone_number) {
-        error_log("ERROR: Missing loan data in session: phone_number='$phone_number', loan_amount='$loan_amount', loan_term='$loan_term'");
-        return ["message" => "Error processing loan request. Please try again.", "next_state" => "start"];
-    }
-
-    $stmt = $db->prepare("INSERT INTO loans (phone_number, loan_amount, loan_term, status) VALUES (?, ?, ?, 'pending')");
-    $stmt->execute([$phone_number, $loan_amount, $loan_term]);
-
-    appendSessionData($session_id, ['menu_state' => 'end']);
-
-    return ["message" => "Your loan request for R$loan_amount over $loan_term months has been submitted. You will receive an SMS shortly.", "next_state" => "end"];
-}
-
-
 ?>

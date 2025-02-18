@@ -2,6 +2,28 @@
 //require_once '../config/database.php';
 require_once '../../app/utils/Logger.php';
 
+//$database = new Database();
+//$db = $database->connect();
+
+function hasPendingLoan($db,$user_id) {
+    Logger::logInfo('loan_validation', "Checking pending loans for User ID: " . $user_id);
+
+    try {
+        $stmt = $db->prepare("SELECT COUNT(*) AS pending_loans FROM loans WHERE user_id = ? AND status = 'Pending'");
+        $stmt->execute([$user_id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $hasPendingLoan = ($result['pending_loans'] > 0);
+
+        Logger::logInfo('loan_validation', "Loan check result for User ID: $user_id - Pending Loan: " . ($hasPendingLoan ? "Yes" : "No"));
+
+        return $hasPendingLoan;
+    } catch (PDOException $e) {
+        Logger::logError('loan_validation', "Database error while checking pending loans: " . $e->getMessage());
+        return false;
+    }
+}
+
 function validateLoanRequest($data) {
     if (!isset($data['user_token'])) {
         Logger::logError('loan_validation', "Missing user token in request.");
@@ -9,7 +31,7 @@ function validateLoanRequest($data) {
     }
 
 if (!isset($data['amount']) || !isset($data['term'])) {
-    Logger::logError('loan_validation', "❌ Missing loan amount or term. Raw Data: " . json_encode($data));
+    Logger::logError('loan_validation', "Missing loan amount or term. Raw Data: " . json_encode($data));
     return ["error" => "Missing loan amount or term."];
 }
 
@@ -17,7 +39,7 @@ $amount = floatval($data['amount']);
 $term = intval($data['term']);
 
 if ($amount <= 0 || $term <= 0) {
-    Logger::logError('loan_validation', "❌ Invalid loan amount or term. Amount: $amount, Term: $term");
+    Logger::logError('loan_validation', "Invalid loan amount or term. Amount: $amount, Term: $term");
     return ["error" => "Invalid loan amount or term."];
 }
 /*
@@ -49,8 +71,8 @@ if ($amount <= 0 || $term <= 0) {
     }
 
     if (!$validTerm) {
-        Logger::logError('loan_validation', "Invalid loan amount or term.");
-        return ["error" => "Invalid loan amount or term."];
+        Logger::logError('loan_validation', "Invalid term amount ratio.");
+        return ["error" => "Invalid term amount ratio."];
     }
 
     return ["valid" => true, "amount" => $amount, "term" => $term];

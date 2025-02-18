@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const heading = document.querySelector(".top-bar h2");
     const submitButton = loginForm.querySelector("button[type='submit']");
 
+
     // Function to check if a cookie exists
     function getCookie(name) {
         const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -60,7 +61,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     
         if (submitButton) {
         submitButton.textContent = "Sign Up";
-        }    
+        }
+        
+        document.title = "Sign Up";
 
     } else {
         console_Log("User token found, attempting auto-login...");

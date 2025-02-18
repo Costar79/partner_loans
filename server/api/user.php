@@ -77,12 +77,22 @@ Logger::logInfo("user_api", "Storing payday: $payday for user ID: $id_number");
 // **Step 1: Retrieve User Data**
 $existingUser = $user->getUserByIdNumber($id_number);
 if ($existingUser) {
+
+    if ($existingUser['state'] !== 'Active') {
+        http_response_code(403);
+        Logger::logError('user_api', "User not active: $id_number");
+        echo json_encode(["error" => "User is not active. Please contact support."]);
+        exit;
+    }    
+    
     $user_id = $existingUser['user_id'];
     $user_partner_id = $existingUser['partner_id'];
     $delayed_payback = $existingUser['delayed_payback'];
+    
 } else {
     $user_id = null;
 }
+
 /*
 $result = $partner->getPartnerByCode($partner_code);
 $partner_id = $result ? $result['partner_id'] : null;
@@ -184,12 +194,12 @@ $expiry_days = $settings['security']['token_expiry_days'] ?? 180;
 $expiry = date('Y-m-d H:i:s', strtotime("+$expiry_days days"));
 $device_fingerprint = $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown';
 
-// ✅ **Step 4: Update Expiry if Token Exists**
+// **Step 4: Update Expiry if Token Exists**
 $new_token = $existingTokenData ? $existingTokenData['token'] : null;
 
 if ($existingTokenData) {
     if (strtotime($existingTokenData['expires_at']) < time()) {
-        // ✅ Token expired, update expiry without creating a new token
+        // Token expired, update expiry without creating a new token
         $stmt = $db->prepare("UPDATE user_tokens SET expires_at = ? WHERE user_id = ? AND phone_number = ?");
         $stmt->execute([$expiry, $user_id, $phone_number]);
         Logger::logInfo('user_api', "Expired token updated for user_id: $user_id");
@@ -199,7 +209,7 @@ if ($existingTokenData) {
         $new_token = $existingTokenData['token']; // Ensure token is reused
     }
 } else {
-    // ✅ No existing token for this phone number, create a new one
+    // No existing token for this phone number, create a new one
     Logger::logInfo('user_api', "Generating new token for user_id: $user_id and phone_number: $phone_number");
     $new_token = bin2hex(random_bytes(32));
     $stmt = $db->prepare("INSERT INTO user_tokens (user_id, phone_number, token, device_fingerprint, expires_at) 
@@ -219,7 +229,7 @@ $response = [
 
 Logger::logInfo("user_api", "Response sent from user.php: " . json_encode($response));
 
-// ✅ **Step 5: Return User Data**
+// **Step 5: Return User Data**
 echo json_encode([
     "message" => "Login successful",
     "user_token" => $new_token,

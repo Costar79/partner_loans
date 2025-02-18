@@ -19,6 +19,11 @@ class Database {
             die("A database error occurred. Please try again later.");
         }
     }
+    
+    public function getDbName() {
+        return DB_NAME;
+    }
+    
 }
 ?>
 
