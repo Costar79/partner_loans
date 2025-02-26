@@ -5,6 +5,35 @@ require_once '../../app/utils/Logger.php';
 //$database = new Database();
 //$db = $database->connect();
 
+function getLatestContractId($db) {
+    $conn = $db->connect();
+    $query = "SELECT contract_id, raw_contract_html FROM contracts ORDER BY created_at DESC LIMIT 1";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $contract = $stmt->fetch(PDO::FETCH_OBJ);
+
+   return $contract ?: null; // Return null if no contract is found
+   
+}
+
+function generateUUID() {
+    $data = unpack('N1a/n1b/n1c/n1d/n1e/N1f', random_bytes(16));
+
+    // Apply RFC 4122 version & variant
+    $data['c'] = ($data['c'] & 0x0fff) | 0x4000; // Set version to 4
+    $data['d'] = ($data['d'] & 0x3fff) | 0x8000; // Set variant to 1
+
+    return sprintf('%08x-%04x-%04x-%04x-%08x%04x',
+        $data['a'], $data['b'], $data['c'], $data['d'], $data['e'], $data['f']
+    );
+}
+
+function generateReference() {
+    $alphanumeric = bin2hex(random_bytes(2)); // 4 alphanumeric characters
+    $numeric = sprintf('%03d', mt_rand(0, 999)); // 3-digit number (000-999)
+    return strtoupper($alphanumeric) . $numeric;
+}
+
 function hasPendingLoan($db,$user_id) {
     Logger::logInfo('loan_validation', "Checking pending loans for User ID: " . $user_id);
 

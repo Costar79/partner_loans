@@ -27,7 +27,7 @@ $user_token = trim($data['user_token']);
 Logger::logInfo('loan_history', "Using user_token: " . $user_token);
 
 try {
-    // ✅ Retrieve `user_id` from `user_token`
+    // Retrieve `user_id` from `user_token`
     $stmt = $db->prepare("SELECT user_id FROM user_tokens WHERE token = ?");
     $stmt->execute([$user_token]);
     $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -41,7 +41,7 @@ try {
     $user_id = $userRow['user_id'];
     Logger::logInfo('loan_history', "User ID Retrieved: " . $user_id);
 
-    // ✅ Fetch Loan History
+    //  Fetch Loan History
     $stmt = $db->prepare("
         SELECT created_at, amount, term, status, settled
         FROM loans 

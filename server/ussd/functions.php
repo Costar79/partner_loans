@@ -1,4 +1,37 @@
 <?php
+function getDayOrLast($day) {
+    // Get the total number of days in the current month
+    $daysInCurrentMonth = date('t');
+
+    // If the value is 0 or greater/equal than the last day of the month, return 'last'
+    if ($day == 0 || $day >= $daysInCurrentMonth) {
+        return 'last';
+    }
+
+    // Otherwise, return the original day
+    return $day;
+}
+
+function getMaxLoanTerm($amount) {
+    // Define loan term limits based on amount
+    $loanTerms = [
+        [500, 749, 1],
+        [750, 1000, 2],
+        [1001, 1500, 3],
+        [1501, 2000, 4],
+        [2001, 4000, 5],
+        [4001, 8000, 6]
+    ];
+
+    foreach ($loanTerms as $range) {
+        if ($amount >= $range[0] && $amount <= $range[1]) {
+            return $range[2]; // Return the maximum term for the amount
+        }
+    }
+
+    return null; // No valid term found
+}
+
 function handleMenu($state, $input, $session_id, $msisdn) {
     global $db, $userModel, $settings;
 
@@ -13,8 +46,27 @@ function handleMenu($state, $input, $session_id, $msisdn) {
     $user_state = $session_data['user_state'] ?? 'Inactive'; // Use stored state
 
     switch ($state) {
+
+        case "enter_payday":
+            
+            appendSessionData($session_id, ['menu_state' => 'enter_payday', 'id_number' => $input]);    
+            
+            return [
+                "message" => "NEXT PAY DAY\n\n"
+                           . "Enter a number between 1 & 31.\n\n"
+                           . "To indicate you next payday.\n\n",
+                "next_state" => "validate_id"
+            ];
+       
         case "validate_id":
-            if (!isValidSouthAfricanID($input)) {
+            
+            appendSessionData($session_id, ['menu_state' => 'validate_id', 'pay_day' => $input]);
+            
+            $id_number = $session_data['id_number'] ?? null;
+
+            error_log("DEBUG: Current ID Number '$id_number'");
+            
+            if (!isValidSouthAfricanID($id_number)) {
                 return [
                     "message" => endSession($session_id, "Invalid ID Number."),
                     "next_state" => "end"
@@ -23,9 +75,13 @@ function handleMenu($state, $input, $session_id, $msisdn) {
             
             // Fetch session data
             $partner_id = $session_data['partner_id'] ?? null;
-
+            
+            //error_log("DEBUG - SESSION INFO: '$session_id' - Phone: '$msisdn', Input: '$input'");
+            
+            $pay_day = getDayOrLast($input);
+                
             // Create user with valid ID
-            $user_id = $userModel->createUserWithPhone($input, $msisdn, $partner_id, $session_id, $expiry, $device_fingerprint);
+            $user_id = $userModel->createUserWithPhone($id_number, $pay_day, $msisdn, $session_id, $expiry, $device_fingerprint, $partner_id);
 
             // **If user creation failed, immediately end session with an error message**
             if (is_string($user_id) && str_contains($user_id, "Error:")) {
@@ -34,14 +90,10 @@ function handleMenu($state, $input, $session_id, $msisdn) {
                     "next_state" => "end"
                 ];
             }
-
-            // Store user_id and move to main menu
-            appendSessionData($session_id, ['menu_state' => 'main_menu', 'user_id' => $user_id, 'id_number' => $input]);
-
                 return [
                     "message" => endSession($session_id, "Co-Lend Finance\n\n"
                                                             . "NCRCP : 18394\n\n"
-                    .                                        "Thank you, please log in again and make your loan request."),
+                    .                                         "Thank you, please log in again and make your loan request."),
                     "next_state" => "end"
                 ];
 
@@ -183,24 +235,47 @@ function applyLoanRequest($session_id, $msisdn) {
 }
 
 
-function getMaxLoanTerm($amount) {
-    // Define loan term limits based on amount
-    $loanTerms = [
-        [500, 749, 1],
-        [750, 1000, 2],
-        [1001, 1500, 3],
-        [1501, 2000, 4],
-        [2001, 4000, 5],
-        [4001, 8000, 6]
+//*************************************************
+//IN TESTING
+//*************************************************
+function callUserAPI(){
+    // Define API URL for user registration/login
+    $userApiUrl = "https://yourdomain.com/server/api/user.php";
+    
+    // Prepare data to send
+    $postData = [
+        "id_number" => "1234567890123", // Replace with actual ID from user input
+        "phone_number" => $phoneNumber,
+        "partner_code" => null, // Modify if you retrieve a partner code
+        "payday" => "last"
     ];
-
-    foreach ($loanTerms as $range) {
-        if ($amount >= $range[0] && $amount <= $range[1]) {
-            return $range[2]; // Return the maximum term for the amount
-        }
+    
+    // Convert data to JSON
+    $jsonData = json_encode($postData);
+    
+    // Initialize cURL
+    $ch = curl_init($userApiUrl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+    
+    // Execute request and fetch response
+    $response = curl_exec($ch);
+    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    
+    // Log response
+    Logger::logInfo("ussd_entry", "Response from user.php: $response");
+    
+    // Process API response
+    $responseData = json_decode($response, true);
+    if ($http_code !== 200 || !isset($responseData['user_token'])) {
+        echo "Error processing request. Please try again later.";
+        exit;
     }
-
-    return null; // No valid term found
+    
+    
 }
 
 

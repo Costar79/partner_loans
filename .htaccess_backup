@@ -1,0 +1,37 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_METHOD} ^(GET|POST|OPTIONS) [NC]
+RewriteCond %{REQUEST_URI} ^/server/api/ [NC]
+RewriteRule .* - [L]
+
+# ✅ Allow access to assets (CSS, JS, images)
+RewriteCond %{REQUEST_URI} ^/(css|js|img|logs)/ [NC]
+RewriteRule .* - [L]
+
+# ✅ Redirect unauthenticated users to login.html
+#RewriteCond %{REQUEST_URI} ^/apply.html$ [NC]
+## RewriteCond %{HTTP_COOKIE} user_token
+#RewriteCond %{HTTP_COOKIE} !user_token
+#RewriteRule ^.*$ /apply.html [L,R=302]
+
+#RewriteCond %{REQUEST_URI} ^/apply.html$ [NC]
+#RewriteCond %{HTTP_COOKIE} !user_token
+#RewriteCond %{REQUEST_URI} !^/server/api/ [NC] 
+#RewriteRule ^.*$ /login.html [L,R=302]
+
+# ✅ Default root redirect to login.html
+RewriteCond %{REQUEST_URI} ^/$ [NC]
+RewriteRule ^.*$ /login.html [L,R=302]
+
+# ✅ Redirect `/pc/0000` to `login.html` and store partner_code as query param
+RewriteCond %{REQUEST_URI} ^/pc/([0-9]{4})$ [NC]
+# Changes the URL format login.html?p_cde=0000
+#RewriteRule ^pc/([0-9]{4})$ /login.html?p_cd=$1 [L,R=302]
+# Keeps the URL format /pc/0000 Remember ONLY 4 digits for now
+RewriteRule ^pc/([0-9]{4})$ /login.html?p_cde=$1 [L]
+
+
+php_value session.cookie_secure 1
+php_value session.cookie_httponly 1
+php_value session.cookie_samesite "None"
+

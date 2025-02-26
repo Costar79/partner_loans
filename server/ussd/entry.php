@@ -78,7 +78,7 @@ if (!sessionExists($session_id)) {
             $partner_id = $partner ? $partner['partner_id'] : null;
 
             // New users must first enter their ID number
-            $menu_state = "validate_id";
+            $menu_state = "enter_payday";
         }
 
         // **Store all required session data**
@@ -92,8 +92,10 @@ if (!sessionExists($session_id)) {
             'menu_state' => $menu_state // Determine if user goes to validate_id or main_menu
         ]);
 
-        if ($menu_state === "validate_id") {
-            echo "Enter your South African ID Number:";
+        if ($menu_state === "enter_payday") {
+            echo "Welcome To Co-Lend Finance\n\n"
+                ."NCRCP : 18394\n\n"
+                ."Enter your South African ID Number:";
             exit;
         }
         

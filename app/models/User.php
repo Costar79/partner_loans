@@ -42,16 +42,23 @@ class User {
         return $stmt->execute([$id_number]);
     }
     
-    public function createUserWithPhone($id_number, $phone_number, $partner_id = null, $session_id, $expiry, $device_fingerprint = 'USSD Session') {
+    public function createUserWithPhone($id_number, $pay_day, $phone_number, $session_id, $expiry, $device_fingerprint = 'USSD Session', $partner_id = null) {
+    
         try {
 
-            $phoneNumber = preg_replace('/^27/', '0', $phone_number);    
+            $phoneNumber = preg_replace('/^27/', '0', $phone_number);
         
+                    
             // Insert user
-            $stmt = $this->conn->prepare("INSERT INTO users (id_number, state, payday, partner_id) VALUES (?, 'Active', 'last', ?)");
-            $stmt->execute([$id_number, $partner_id]);
+            $stmt = $this->conn->prepare("INSERT INTO users (id_number, state, payday, partner_id) VALUES (?, 'Active', ?, ?)");
+            $stmt->execute([$id_number, $pay_day, $partner_id]);
+            
+            //$state = 'Active';
+            //$stmt = $this->conn->prepare("INSERT INTO users (id_number, state, payday) VALUES (?,'Active','last')");
+            //$stmt->execute([$id_number]);            
+            
             $user_id = $this->conn->lastInsertId();
-    
+
             // Insert into user_tokens using session_id as token
             $stmt = $this->conn->prepare("INSERT INTO user_tokens (user_id, phone_number, token, device_fingerprint, expires_at) 
                                           VALUES (?, ?, ?, ?, ?)");
@@ -75,6 +82,7 @@ class User {
                 }
                 return "Error: " . $e->getMessage();
         }
+        
     }
         
     

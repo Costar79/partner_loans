@@ -1,6 +1,8 @@
 <?php
 header("Content-Type: application/json");
 require_once '../config/database.php';
+require_once "../config/sms.php";
+require_once "../config/email.php";
 require_once '../../app/utils/Logger.php';
 require_once 'loan_validation.php';
 
@@ -30,7 +32,7 @@ if (!isset($data['user_token'])) {
 
 //  Step 1: Validate User Token & Fetch User State
 $stmt = $db->prepare("
-    SELECT u.user_id, u.state, u.delayed_payback, u.partner_id, u.payday, p.max_delayed_payback
+    SELECT u.user_id, u.state, u.delayed_payback, u.partner_id, u.payday, ut.phone_number, u.id_number, p.max_delayed_payback
     FROM users u
     JOIN user_tokens ut ON u.user_id = ut.user_id
     LEFT JOIN partners p ON u.partner_id = p.partner_id
@@ -52,6 +54,8 @@ $user_state = $user['state'];
 $delayed_payback = $user['delayed_payback'] ?? 0;
 $max_delayed_payback = $user['max_delayed_payback'] ?? 0;
 $payday= $user['payday'];
+$user_phone_no= $user['phone_number'];
+$user_id_number= $user['id_number'];
 $hasPartner = !is_null($user['partner_id']);
 
 Logger::logInfo('loan_api', "DEBUG: User ID: $user_id, Partner ID: {$user['partner_id']}, Delayed Payback: $delayed_payback, Max Allowed: $max_delayed_payback");
@@ -120,11 +124,30 @@ $start_date = calculateNextPayday($payday,date('Y-m-d'),$followingPayday);
         $pendingLoan = hasPendingLoan($db, $user_id);
         
         if (!$pendingLoan){
-            
-            $stmt = $db->prepare("INSERT INTO loans (user_id, amount, term, status, settled, start_date) VALUES (?, ?, ?, 'Pending', 'No',?)");
+
+            $stmt = $db->prepare("INSERT INTO loans (user_id, amount, term, status, settled, start_date) VALUES (?, ?, ?, 'Pending', 'No', ?)");
             $stmt->execute([$user_id, $amount, $term, $start_date]);
         
             Logger::logInfo('loan_api', " Loan application submitted successfully (User ID: $user_id, Amount: $amount, Term: $term)");
+        
+            $recipient = $user_phone_no;
+            //$message = "Co-Lend Finance|NCRCP:18394||We have received a loan application from ID:$user_id_number for $amount over $term months, ensure you have the following documentation on hand";
+            $message = "Co-Lend Finance:18394||"
+                        ."Loan application from $user_id_number for R$amount over $term months||"
+                        ."Have your ID, 3 Month Bank Statements, list of monthly expenses ready.";            
+            
+            $smsSender = new SMSSender();
+            $smsSender->sendSMS($recipient, $message);   
+            
+            $recipientEmail = 'colendfinance@gmail.com';
+            $ccEmail = 'rdscos@gmail.com';
+            $emailSubject = "LOAN APPLICATION - Co-Lend Finance";
+            $emailBody = "A client has just applied for a loan\n\n";
+            $emailBody .= "Contact Number :  $recipient\n";
+            $emailBody .= "ID Number :  $user_id_number\n";
+            $emailBody .= "Amount :  R$amount\n";
+            $emailBody .= "Term :  $term\n";
+            sendEmail($recipientEmail, $ccEmail,  $emailSubject, $emailBody);            
         
             echo json_encode([
                 "message" => "Loan application submitted successfully.",

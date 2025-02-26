@@ -1,0 +1,390 @@
+/* Admin Panel Styles - admin.css */
+
+/* Apply Poppins font globally except for the table */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F8F9FA;
+    color: #3B1E08;
+    text-align: center;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Ensure tables do not use Poppins */
+table {
+    font-family: Arial, sans-serif;
+}
+
+td {
+    padding: 2px 4px; /* Reduce cell padding */
+    text-align: center; /* Center the button */
+    vertical-align: middle; /* Align button vertically */
+}
+
+/* Full-Width Header */
+.header {
+    width: 100%;
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 25px 0;
+    z-index: 1001;
+    position: relative;
+}
+
+.header img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+/* Ensure Header Content is Centered */
+.header h1, .header h2 {
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+
+.top-bar {
+    background-color: #3B1E08;
+    color: white;
+    padding: 3px 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+    position: relative;
+    z-index: 1000;
+
+}
+
+.admin-navbar {
+    background: #3B1E08;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+    width: 50%;    
+}
+
+.admin-navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 0 3px;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.admin-navbar a:hover {
+    color: #1BD793;
+}
+
+
+/* Admin Wrapper */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Admin Container */
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 80%;
+    max-width: 800px;
+    margin: 15px auto;
+}
+
+/* Admin Navigation Bar */
+.admin-nav {
+    background-color: #3B1E08;
+    padding: 10px 0;
+    text-align: center;
+}
+.admin-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+.admin-nav a:hover {
+    color: #1BD793;
+}
+
+.collapsible-sidebar {
+    background: #3B1E08;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    left: -250px;
+    top: 0;
+    transition: left 0.3s ease;
+    padding-top: 20px;
+}
+
+.sidebar-links a {
+    color: white;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.sidebar-links a:hover {
+    background: #1BD793;
+}
+
+#toggleSidebar {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background: #3B1E08;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Notification Container - Prevents Page Shift */
+.notification-container {
+    height: 60px; /* Fixed height prevents shifting */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Default Hidden State */
+.notification-messages {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+/* Show Message */
+.notification-messages.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Error Message */
+.notification-messages.error {
+    height: 60px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #FDEDED;
+    color: #FF0000;
+    border: 1px solid #FF0000;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Success Message */
+.notification-messages.success {
+    height: 60px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px;
+    background-color: #E6F8EC;
+    color: #1BD793;
+    border: 1px solid #1BD793;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Print Loan Button Styling */
+.print-loan {
+    background-color: #1BD793;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0; /* Remove extra margins */
+    width: 60%;
+}
+
+
+
+.print-loan:hover {
+    background-color: #157F63;
+}
+
+.print-loan:active {
+    background-color: #0E5A47;
+}
+
+/* Loan Applications Table */
+.loan-table {
+    width: 80%; /* Centered table with 80% width */
+    margin: 20px auto; /* Centering table */
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 0.8rem;
+    display: table;
+}
+
+.loan-table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.loan-table th, .loan-table td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
+
+.loan-table th {
+    background-color: #3B1E08;
+    color: white;
+    padding: 3px;
+}
+
+.loan-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.loan-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Admin Buttons */
+button {
+    background-color: #3B1E08;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 45%;
+    max-width: 150px;
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Button Hover Effects */
+button:hover {
+    background-color: #1BD793;
+    color: #3B1E08;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #157F63;
+    transform: scale(0.98);
+}
+
+/* Logout Button */
+#logoutButton {
+    background-color: #FF5733;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    max-width: 120px;
+}
+
+/* Logout Hover & Active Effects */
+#logoutButton:hover {
+    background-color: #C4411D;
+}
+#logoutButton:active {
+    background-color: #8E2D10;
+}
+
+/* Ensure the password field and icon stay aligned */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 35px; /* Space for the icon */
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    font-size: 0.75rem; /* 25% smaller than original */
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.toggle-password:hover {
+    opacity: 0.7;
+}
+
+/* Admin Table */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+.admin-table th, .admin-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+.admin-table th {
+    background-color: #3B1E08;
+    color: white;
+}
+.admin-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.admin-table tr:hover {
+    background-color: #ddd;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+    button {
+        width: 60%;
+    }
+}

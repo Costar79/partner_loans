@@ -1,8 +1,8 @@
 <?php
 header("Content-Type: application/json");
 require_once 'user_functions.php';
-require_once '../config/database.php';
 require_once '../config/settings.php';
+require_once '../config/database.php';
 require_once '../../app/models/User.php';
 require_once '../../app/models/Partner.php';
 require_once '../../app/utils/Logger.php';
@@ -117,7 +117,7 @@ $partnerData = !empty($partner_code) ? $partner->getPartnerByCode($partner_code)
 $partner_id = $partnerData ? $partnerData['partner_id'] : null;
 
 if (is_null($partner_id)){
-$partner_id = $partner->getPartnerByID($user_partner_id);
+$partner_id = $partner->getPartnerByID($partner_id);
 }
 
 Logger::logInfo('user_api', "Partner ID Retrieved: " . ($partner_id ?? 'NULL'));
